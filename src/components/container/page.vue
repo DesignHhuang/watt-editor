@@ -1,9 +1,5 @@
 <template>
   <div class="umo-page-container">
-    <container-toc
-      v-if="pageOptions.showToc"
-      @close="pageOptions.showToc = false"
-    />
     <div class="umo-zoomable-container umo-scrollbar">
       <div
         class="umo-zoomable-content"
@@ -12,11 +8,8 @@
           height: pageZoomHeight,
         }"
       >
-        <t-watermark
+        <div
           class="umo-page-content"
-          :alpha="pageOptions.watermark.alpha"
-          v-bind="watermarkOptions"
-          :watermark-content="pageOptions.watermark"
           :style="{
             '--umo-page-background': pageOptions.background,
             '--umo-page-margin-top': (pageOptions.margin?.top ?? '0') + 'cm',
@@ -31,18 +24,6 @@
             transform: `scale(${pageOptions.zoomLevel ? pageOptions.zoomLevel / 100 : 1})`,
           }"
         >
-          <div class="umo-page-node-header" contenteditable="false">
-            <div
-              class="umo-page-corner corner-tl"
-              style="width: var(--umo-page-margin-left)"
-            ></div>
-
-            <div class="umo-page-node-header-content"></div>
-            <div
-              class="umo-page-corner corner-tr"
-              style="width: var(--umo-page-margin-right)"
-            ></div>
-          </div>
           <div class="umo-page-node-content">
             <editor>
               <template #bubble_menu="props">
@@ -50,18 +31,7 @@
               </template>
             </editor>
           </div>
-          <div class="umo-page-node-footer" contenteditable="false">
-            <div
-              class="umo-page-corner corner-bl"
-              style="width: var(--umo-page-margin-left)"
-            ></div>
-            <div class="umo-page-node-footer-content"></div>
-            <div
-              class="umo-page-corner corner-br"
-              style="width: var(--umo-page-margin-right)"
-            ></div>
-          </div>
-        </t-watermark>
+        </div>
       </div>
     </div>
     <t-image-viewer
@@ -76,8 +46,6 @@
       size="small"
       :offset="['25px', '30px']"
     />
-    <container-search-replace />
-    <container-print />
   </div>
 </template>
 
@@ -133,31 +101,6 @@ watch(
   () => {
     setPageZoomHeight()
   },
-)
-
-// 水印
-const watermarkOptions = $ref<{
-  x: number
-  y?: number
-  width?: number
-  height: number
-  type?: string
-}>({
-  x: 0,
-  height: 0,
-})
-watch(
-  () => pageOptions.value.watermark,
-  ({ type }: Partial<WatermarkOption> = { type: '' }) => {
-    if (type === 'compact') {
-      watermarkOptions.width = 320
-      watermarkOptions.y = 240
-    } else {
-      watermarkOptions.width = 480
-      watermarkOptions.y = 360
-    }
-  },
-  { deep: true, immediate: true },
 )
 
 // 图片预览

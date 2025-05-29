@@ -32,8 +32,6 @@ import BreakMarks from './break-marks'
 import BulletList from './bullet-list'
 import Callout from './callout'
 import CodeBlock from './code-block'
-import Datetime from './datetime'
-import Echarts from './echarts'
 import File from './file'
 import FileHandler from './file-handler'
 import FontSize from './font-size'
@@ -57,173 +55,169 @@ import TableHeader from './table/header'
 import Tag from './tag'
 import TextAlign from './text-align'
 import TextBox from './text-box'
-import Toc from './toc'
 import typeWriter from './type-writer'
 import Video from './video'
 
 export const getDefaultExtensions = ({
-  container,
-  options,
-  uploadFileMap,
+    container,
+    options,
+    uploadFileMap,
 }: {
-  container: string
-  options: { value: UmoEditorOptions }
-  uploadFileMap: { value: any }
+    container: string
+    options: { value: UmoEditorOptions }
+    uploadFileMap: { value: any }
 }) => {
-  const { dicts, page, document: doc, users, file } = options.value
+    const { dicts, page, document: doc, users, file } = options.value
 
-  const extensions = [
-    StarterKit.configure({
-      bold: false,
-      bulletList: false,
-      orderedList: false,
-      codeBlock: false,
-      horizontalRule: false,
-      dropcursor: false,
-    }),
-    Placeholder.configure({
-      placeholder: () => String(l(doc?.placeholder ?? '')),
-    }),
-    Focus.configure({
-      className: 'umo-node-focused',
-      mode: 'all',
-    }),
-    FormatPainter,
-    FontFamily,
-    FontSize,
-    Bold.extend({
-      renderHTML: ({ HTMLAttributes }) => ['b', HTMLAttributes, 0],
-    }),
-    Underline,
-    Subscript,
-    Superscript,
-    Color,
-    TextColor,
-    Highlight.configure({
-      multicolor: true,
-    }),
-    Indent,
-    BulletList,
-    OrderedList,
-    TextAlign,
-    NodeAlign,
-    TaskItem.configure({ nested: true }),
-    TaskList.configure({
-      HTMLAttributes: {
-        class: 'umo-task-list',
-      },
-    }),
-    LineHeight.configure({
-      types: ['heading', 'paragraph'],
-      defaultLineHeight:
-        dicts?.lineHeights?.find((item: any) => item.default)?.value ??
-        undefined,
-    }),
-    Margin,
-    SearchReplace.configure({
-      searchResultClass: 'umo-search-result',
-    }),
-    Link,
-    Image,
-    Video,
-    Audio,
-    File,
-    TextBox,
-    CodeBlock,
-    hr,
-    Iframe,
-    Mathematics,
-    Columns,
-    Tag,
-    Callout,
-    Datetime,
-    Bookmark.configure({
-      class: 'umo-editor-bookmark',
-    }),
+    const extensions = [
+        StarterKit.configure({
+            bold: false,
+            bulletList: false,
+            orderedList: false,
+            codeBlock: false,
+            horizontalRule: false,
+            dropcursor: false,
+        }),
+        Placeholder.configure({
+            placeholder: () => String(l(doc?.placeholder ?? '')),
+        }),
+        Focus.configure({
+            className: 'umo-node-focused',
+            mode: 'all',
+        }),
+        FormatPainter,
+        FontFamily,
+        FontSize,
+        Bold.extend({
+            renderHTML: ({ HTMLAttributes }) => ['b', HTMLAttributes, 0],
+        }),
+        Underline,
+        Subscript,
+        Superscript,
+        Color,
+        TextColor,
+        Highlight.configure({
+            multicolor: true,
+        }),
+        Indent,
+        BulletList,
+        OrderedList,
+        TextAlign,
+        NodeAlign,
+        TaskItem.configure({ nested: true }),
+        TaskList.configure({
+            HTMLAttributes: {
+                class: 'umo-task-list',
+            },
+        }),
+        LineHeight.configure({
+            types: ['heading', 'paragraph'],
+            defaultLineHeight:
+                dicts?.lineHeights?.find((item: any) => item.default)?.value ??
+                undefined,
+        }),
+        Margin,
+        SearchReplace.configure({
+            searchResultClass: 'umo-search-result',
+        }),
+        Link,
+        Image,
+        Video,
+        Audio,
+        File,
+        TextBox,
+        CodeBlock,
+        hr,
+        Iframe,
+        Mathematics,
+        Columns,
+        Tag,
+        Callout,
+        Bookmark.configure({
+            class: 'umo-editor-bookmark',
+        }),
 
-    // 表格
-    Table,
-    TableRow,
-    TableHeader,
-    TableCell,
+        // 表格
+        Table,
+        TableRow,
+        TableHeader,
+        TableCell,
 
-    // 页面
-    Toc,
-    BreakMarks.configure({
-      visible: page.showBreakMarks,
-    }),
-    PageBreak,
+        // 页面
+        BreakMarks.configure({
+            visible: page.showBreakMarks,
+        }),
+        PageBreak,
 
-    // 其他
-    Mention.configure({
-      suggestion: getUsersSuggestion(users ?? []),
-    }),
-    Selection,
-    NodeRange,
-    TableOfContents.configure({
-      getIndex: getHierarchicalIndexes,
-      scrollParent: () =>
-        document.querySelector(
-          `${container} .umo-zoomable-container`,
-        ) as HTMLElement,
-      getId: () => shortId(6),
-    }),
-    Typography.configure(doc?.typographyRules),
-    CharacterCount.configure({
-      limit: doc?.characterLimit !== 0 ? doc?.characterLimit : undefined,
-    }),
-    FileHandler.configure({
-      allowedMimeTypes: file?.allowedMimeTypes,
-      onPaste(editor: Editor, files: any) {
-        // 记录 已有位置
-        const pageContainer = document.querySelector(
-          `${container} .umo-zoomable-container`,
-        ) as HTMLElement
-        const scrollTop = pageContainer?.scrollTop || 0
-        for (const file of files) {
-          editor.commands.insertFile({
-            file,
-            uploadFileMap: uploadFileMap.value,
-            autoType: true,
-          })
-        }
-        // 恢复滚动位置
-        if (pageContainer) {
-          // 使用 setTimeout 确保 DOM 更新完成后再恢复滚动位置
-          setTimeout(() => {
-            pageContainer.scrollTop = scrollTop
-          }, 0)
-        }
-      },
-      onDrop: (editor: Editor, files: any, pos: number) => {
-        for (const file of files) {
-          editor.commands.insertFile({
-            file,
-            uploadFileMap: uploadFileMap.value,
-            autoType: true,
-            pos,
-          })
-        }
-      },
-    }),
-    Dropcursor.configure({
-      color: 'var(--umo-primary-color)',
-    }),
-    Echarts,
-    typeWriter,
-  ]
+        // 其他
+        Mention.configure({
+            suggestion: getUsersSuggestion(users ?? []),
+        }),
+        Selection,
+        NodeRange,
+        TableOfContents.configure({
+            getIndex: getHierarchicalIndexes,
+            scrollParent: () =>
+                document.querySelector(
+                    `${container} .umo-zoomable-container`,
+                ) as HTMLElement,
+            getId: () => shortId(6),
+        }),
+        Typography.configure(doc?.typographyRules),
+        CharacterCount.configure({
+            limit: doc?.characterLimit !== 0 ? doc?.characterLimit : undefined,
+        }),
+        FileHandler.configure({
+            allowedMimeTypes: file?.allowedMimeTypes,
+            onPaste(editor: Editor, files: any) {
+                // 记录 已有位置
+                const pageContainer = document.querySelector(
+                    `${container} .umo-zoomable-container`,
+                ) as HTMLElement
+                const scrollTop = pageContainer?.scrollTop || 0
+                for (const file of files) {
+                    editor.commands.insertFile({
+                        file,
+                        uploadFileMap: uploadFileMap.value,
+                        autoType: true,
+                    })
+                }
+                // 恢复滚动位置
+                if (pageContainer) {
+                    // 使用 setTimeout 确保 DOM 更新完成后再恢复滚动位置
+                    setTimeout(() => {
+                        pageContainer.scrollTop = scrollTop
+                    }, 0)
+                }
+            },
+            onDrop: (editor: Editor, files: any, pos: number) => {
+                for (const file of files) {
+                    editor.commands.insertFile({
+                        file,
+                        uploadFileMap: uploadFileMap.value,
+                        autoType: true,
+                        pos,
+                    })
+                }
+            },
+        }),
+        Dropcursor.configure({
+            color: 'var(--umo-primary-color)',
+        }),
+        typeWriter,
+    ]
 
-  return extensions
+    return extensions
 }
 
 export const inputAndPasteRules = (options: any) => {
-  let enableRules: boolean | Extension[] = true
-  const $document = useState('document', options)
-  if (
-    !options.value.document?.enableMarkdown ||
-    !$document.value?.enableMarkdown
-  ) {
-    enableRules = [Mathematics, Typography, Image as Extension]
-  }
-  return enableRules
+    let enableRules: boolean | Extension[] = true
+    const $document = useState('document', options)
+    if (
+        !options.value.document?.enableMarkdown ||
+        !$document.value?.enableMarkdown
+    ) {
+        enableRules = [Mathematics, Typography, Image as Extension]
+    }
+    return enableRules
 }
