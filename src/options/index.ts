@@ -14,9 +14,7 @@ import type {
     LineHeight,
     LocaleLabel,
     PageSize,
-    Template,
     UmoEditorOptions,
-    WebPageItem,
 } from '@/types'
 
 import { defaultDicts } from './dicts'
@@ -27,11 +25,10 @@ const defaultOptions: UmoEditorOptions = {
     locale: 'zh-CN',
     theme: 'light',
     height: '100%',
-    fullscreenZIndex: 10,
     dicts: defaultDicts,
     toolbar: {
-        defaultMode: 'ribbon',
-        menus: ['base', 'insert', 'table', 'tools', 'page', 'export'],
+        defaultMode: 'classic',
+        menus: ['base', 'insert', 'tools', 'page', 'export'],
         disableMenuItems: [],
         importWord: {
             enabled: true,
@@ -58,19 +55,6 @@ const defaultOptions: UmoEditorOptions = {
         },
         defaultOrientation: 'portrait',
         defaultBackground: '#fff',
-        showBreakMarks: true,
-        showLineNumber: false,
-        showBookmark: false,
-        showToc: false,
-        watermark: {
-            type: 'compact',
-            alpha: 0.2,
-            fontColor: '#000',
-            fontSize: 16,
-            fontFamily: 'SimSun',
-            fontWeight: 'normal',
-            text: '',
-        },
     },
     document: {
         title: '',
@@ -99,21 +83,7 @@ const defaultOptions: UmoEditorOptions = {
             interval: 300000,
         },
     },
-    echarts: {
-        mode: 1,
-        renderImage: false,
-        onCustomSettings() {
-            return null
-        },
-    },
-    templates: [],
     cdnUrl: 'https://unpkg.com/@umoteam/editor-external@latest',
-    shareUrl: location.href || '',
-    diagrams: {
-        domain: 'https://embed.diagrams.net',
-        // https://www.drawio.com/doc/faq/supported-url-parameters
-        params: {},
-    },
     file: {
         allowedMimeTypes: [],
         maxSize: 1024 * 1024 * 100, // 100M
@@ -203,11 +173,6 @@ const ojbectSchema = new ObjectSchema({
     height: {
         merge: 'replace',
         validate: 'string!',
-        required: false,
-    },
-    fullscreenZIndex: {
-        merge: 'replace',
-        validate: 'number',
         required: false,
     },
     dicts: {
@@ -444,80 +409,6 @@ const ojbectSchema = new ObjectSchema({
                 validate: 'string',
                 required: false,
             },
-            showBreakMarks: {
-                merge: 'replace',
-                validate: 'boolean',
-                required: false,
-            },
-            showBookmark: {
-                merge: 'replace',
-                validate: 'boolean',
-                required: false,
-            },
-            showLineNumber: {
-                merge: 'replace',
-                validate: 'boolean',
-                required: false,
-            },
-            showToc: {
-                merge: 'replace',
-                validate: 'boolean',
-                required: false,
-            },
-            watermark: {
-                required: false,
-                merge: 'replace',
-                validate: 'object',
-                schema: {
-                    type: {
-                        merge: 'replace',
-                        validate(value: 'compact' | 'spacious') {
-                            if (value && !['compact', 'spacious'].includes(value)) {
-                                throw new Error(
-                                    'Key "watermark": Key "type" must be one of "compact" or "spacious".',
-                                )
-                            }
-                        },
-                        required: false,
-                    },
-                    alpha: {
-                        merge: 'replace',
-                        validate: 'number',
-                        required: false,
-                    },
-                    fontColor: {
-                        merge: 'replace',
-                        validate: 'string',
-                        required: false,
-                    },
-                    fontFamily: {
-                        merge: 'replace',
-                        validate(value: string | null) {
-                            if (value !== null && typeof value !== 'string') {
-                                throw new Error(
-                                    'Key "watermark": Key "fontFamily" must be a string.',
-                                )
-                            }
-                        },
-                        required: false,
-                    },
-                    fontSize: {
-                        merge: 'replace',
-                        validate: 'number',
-                        required: false,
-                    },
-                    fontWeight: {
-                        merge: 'replace',
-                        validate: 'string',
-                        required: false,
-                    },
-                    text: {
-                        merge: 'replace',
-                        validate: 'string',
-                        required: false,
-                    },
-                },
-            },
             size: {
                 required: false,
                 merge: 'replace',
@@ -648,164 +539,9 @@ const ojbectSchema = new ObjectSchema({
             },
         },
     },
-    ai: {
-        merge: 'replace',
-        validate: 'object',
-        required: false,
-        schema: {
-            assistant: {
-                merge: 'assign',
-                validate: 'object',
-                required: false,
-                schema: {
-                    enabled: {
-                        merge: 'replace',
-                        validate: 'boolean',
-                        required: false,
-                    },
-                    maxlength: {
-                        merge: 'replace',
-                        validate(value: number) {
-                            if (!isNumber(value) || !Number.isInteger(value) || value <= 0) {
-                                throw new Error(
-                                    'Key "assistant": Key "maxlength" must be a number.',
-                                )
-                            }
-                        },
-                        required: false,
-                    },
-                    commands: {
-                        merge: 'replace',
-                        validate(value: { label: LocaleLabel; value: LocaleLabel }[]) {
-                            if (value && !Array.isArray(value)) {
-                                throw new Error(
-                                    'Key "assistant": Key "commands" must be a array.',
-                                )
-                            }
-                            value.forEach((item, index: number) => {
-                                if (!item.label || !item.value) {
-                                    throw new Error(
-                                        'Key "assistant": Key "commands" must be a array of objects with "label" and "value" properties.',
-                                    )
-                                }
-                                if (!isLocale(item.label)) {
-                                    throw new Error(
-                                        `Key "assistant": Key "commands[${index}]": Key "label" must be string, or a object with "en_US" and "zh_CN" properties.`,
-                                    )
-                                }
-                                if (!isLocale(item.value)) {
-                                    throw new Error(
-                                        `Key "assistant": Key "commands[${index}]": Key "value" must be string, or a object with "en_US" and "zh_CN" properties.`,
-                                    )
-                                }
-                            })
-                        },
-                        required: false,
-                    },
-                    onMessage: {
-                        merge: 'replace',
-                        validate(value: AsyncFunction) {
-                            if (!isAsyncFunction(value)) {
-                                throw new Error('Key "onMessage" must be a async function.')
-                            }
-                        },
-                        required: false,
-                    },
-                },
-            },
-        },
-    },
-    echarts: {
-        merge: 'replace',
-        validate: 'object',
-        required: false,
-        schema: {
-            mode: {
-                merge: 'replace',
-                validate: 'number',
-                required: false,
-            },
-            renderImage: {
-                merge: 'replace',
-                validate: 'boolean',
-                required: false,
-            },
-            onCustomSettings: {
-                merge: 'replace',
-                validate(value: any) {
-                    if (!isFunction(value)) {
-                        throw new Error('Key "onCustomSettings" must be a function.')
-                    }
-                },
-                required: false,
-            },
-        },
-    },
-    webPages: {
-        merge: 'replace',
-        validate(value: WebPageItem[]) {
-            if (value && !Array.isArray(value)) {
-                throw new Error('Key "webPages": must be a array.')
-            }
-            value.forEach((item, index: number) => {
-                if (!item.label || item.label === '') {
-                    throw new Error(
-                        `Key "webPages[${index}]": Key "label" cannot be empty.`,
-                    )
-                }
-                if (!item.icon || item.icon === '') {
-                    throw new Error(
-                        `Key "webPages[${index}]": Key "icon" cannot be empty.`,
-                    )
-                }
-                if (!item.validate || !isFunction(item.validate)) {
-                    throw new Error(
-                        `Key "webPages[${index}]": Key "validate" must be a function.`,
-                    )
-                }
-                if (!item.transformURL || !isFunction(item.transformURL)) {
-                    throw new Error(
-                        `Key "webPages[${index}]": Key "transformURL" must be a function.`,
-                    )
-                }
-            })
-        },
-        required: false,
-    },
-    shareUrl: {
-        merge: 'replace',
-        validate: 'string',
-        required: false,
-    },
-    templates: {
-        merge: 'replace',
-        validate(value: Template[]) {
-            if (value && !Array.isArray(value)) {
-                throw new Error('Key "templates": must be a array.')
-            }
-            value.forEach((item, index: number) => {
-                if (!item.title || item.title === '') {
-                    throw new Error(
-                        `Key "templates[${index}]": Key "title" cannot be empty.`,
-                    )
-                }
-                if (!item.content || item.content === '') {
-                    throw new Error(
-                        `Key "templates[${index}]": Key "content" cannot be empty.`,
-                    )
-                }
-            })
-        },
-        required: false,
-    },
     cdnUrl: {
         merge: 'replace',
         validate: 'string',
-        required: false,
-    },
-    diagrams: {
-        merge: 'assign',
-        validate: 'object',
         required: false,
     },
     file: {

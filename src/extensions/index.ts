@@ -144,9 +144,6 @@ export const getDefaultExtensions = ({
         TableCell,
 
         // 页面
-        BreakMarks.configure({
-            visible: page.showBreakMarks,
-        }),
         PageBreak,
 
         // 其他

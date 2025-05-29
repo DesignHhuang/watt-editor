@@ -40,9 +40,6 @@ const options = $ref({
     content: localStorage.getItem('document.content') ?? '<p>测试文档</p>',
     characterLimit: 10000,
   },
-  page: {
-    showBookmark: true,
-  },
   templates,
   cdnUrl: 'https://cdn.umodoc.com',
   shareUrl: 'https://umodoc.com',
@@ -53,14 +50,6 @@ const options = $ref({
     //   'video/mp4',
     //   'audio/*',
     // ],
-  },
-  ai: {
-    assistant: {
-      enabled: true,
-      async onMessage() {
-        return await Promise.resolve('<p>AI助手测试</p>')
-      },
-    },
   },
   user: {
     id: 'umoeditor',

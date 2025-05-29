@@ -1,19 +1,5 @@
 <template>
   <div v-if="$toolbar.show" class="umo-toolbar-container">
-    <toolbar-ribbon
-      v-if="$toolbar.mode === 'ribbon'"
-      :menus="toolbarMenus"
-      :current-menu="currentMenu"
-      @menu-change="menuChange"
-    >
-      <template
-        v-for="item in options.toolbar?.menus"
-        :key="item"
-        #[`toolbar_${item}`]="props"
-      >
-        <slot :name="`toolbar_${item}`" v-bind="props" />
-      </template>
-    </toolbar-ribbon>
     <toolbar-classic
       v-if="$toolbar.mode === 'classic'"
       :menus="toolbarMenus"
@@ -109,7 +95,7 @@
         <template #dropdown>
           <t-dropdown-menu
             v-for="item in editorModeOptions"
-            :key="item.value as string"
+            :key="item.value"
             :content="item.label"
             :value="item.value"
             :divider="item.divider"
@@ -148,9 +134,7 @@ const online = useOnline()
 const defaultToolbarMenus = [
   { label: t('toolbar.base'), value: 'base' },
   { label: t('toolbar.insert'), value: 'insert' },
-  { label: t('toolbar.table'), value: 'table' },
   { label: t('toolbar.tools'), value: 'tools' },
-  { label: t('toolbar.page'), value: 'page' },
   { label: t('toolbar.export'), value: 'export' },
 ]
 let toolbarMenus = defaultToolbarMenus
@@ -179,19 +163,9 @@ watch(
 // 切换编辑器模式
 const editorModeOptions = [
   {
-    label: t('toolbar.ribbon'),
-    value: 'ribbon',
-    prefixIcon: 'toolbar-ribbon',
-  },
-  {
     label: t('toolbar.classic'),
     value: 'classic',
     prefixIcon: 'toolbar-classic',
-  },
-  {
-    label: t('toolbar.hide'),
-    value: 'hideToolbar',
-    prefixIcon: 'hide-toolbar',
   },
 ]
 

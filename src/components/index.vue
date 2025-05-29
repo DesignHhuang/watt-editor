@@ -11,11 +11,10 @@
       class="umo-editor-container"
       :class="{
         'toolbar-classic': isRecord($toolbar) && $toolbar.mode === 'classic',
-        'umo-editor-is-fullscreen': fullscreen,
       }"
       :style="{
         height: options.height,
-        zIndex: fullscreen ? options.fullscreenZIndex : 'unset',
+        zIndex: 'unset',
       }"
     >
       <header class="umo-toolbar">
@@ -118,11 +117,7 @@ const editor = ref(null)
 const savedAt = ref(null)
 const page = ref({})
 const blockMenu = ref(false)
-const assistant = ref(false)
 const imageViewer = ref({ visible: false, current: null })
-const searchReplace = ref(false)
-const printing = ref(false)
-const fullscreen = ref(false)
 const exportFile = ref({ pdf: false, image: false })
 const uploadFileMap = ref(new Map())
 // const bookmark = ref(false)
@@ -133,28 +128,14 @@ provide('editor', editor)
 provide('savedAt', savedAt)
 provide('page', page)
 provide('blockMenu', blockMenu)
-provide('assistant', assistant)
 provide('imageViewer', imageViewer)
-provide('searchReplace', searchReplace)
-provide('printing', printing)
-provide('fullscreen', fullscreen)
 provide('exportFile', exportFile)
 provide('uploadFileMap', uploadFileMap)
-// provide('bookmark', bookmark)
 provide('destroyed', destroyed)
 
 watch(
   () => options.value.page,
-  ({
-    defaultBackground,
-    defaultMargin,
-    defaultOrientation,
-    watermark,
-    showBreakMarks,
-    showBookmark,
-    showLineNumber,
-    showToc,
-  }: PageOption) => {
+  ({ defaultBackground, defaultMargin, defaultOrientation }: PageOption) => {
     page.value = {
       size: options.value.dicts?.pageSizes.find(
         (item: { default: boolean }) => item.default,
@@ -162,11 +143,6 @@ watch(
       margin: defaultMargin,
       background: defaultBackground,
       orientation: defaultOrientation,
-      watermark,
-      showBreakMarks,
-      showBookmark,
-      showLineNumber,
-      showToc,
       zoomLevel: 100,
       autoWidth: false,
       preview: {
@@ -175,11 +151,7 @@ watch(
         zoom: 100,
       },
     }
-    if (showBreakMarks) {
-      editor.value?.commands.showInvisibleCharacters()
-    } else {
-      editor.value?.commands.hideInvisibleCharacters()
-    }
+    editor.value?.commands.hideInvisibleCharacters()
   },
   { immediate: true, deep: true },
 )
@@ -345,40 +317,10 @@ watch(
 )
 
 watch(
-  () => page.value.showToc,
-  (showToc: boolean) => {
-    emits('changed:pageShowToc', showToc)
-  },
-)
-
-watch(
   () => page.value.zoomLevel,
   (zoomLevel: number, oldZoomLevel: number) => {
     emits('changed:pageZoom', { zoomLevel, oldZoomLevel })
   },
-)
-
-watch(
-  () => page.value.preview?.enabled,
-  (previewEnabled: boolean) => {
-    emits('changed:pagePreview', previewEnabled)
-  },
-)
-
-watch(
-  () => page.value.watermark,
-  (pageWatermark: any, oldPageWatermark: any) => {
-    emits('changed:pageWatermark', { pageWatermark, oldPageWatermark })
-  },
-  { deep: true },
-)
-
-watch(
-  () => printing.value,
-  () => {
-    emits('print')
-  },
-  { deep: true },
 )
 
 // i18n Setup
@@ -759,17 +701,6 @@ const print = () => {
   }
 }
 
-const toggleFullscreen = (isFullscreen?: boolean) => {
-  if (isFullscreen !== undefined) {
-    if (!isBoolean(isFullscreen)) {
-      throw new Error('"isFullscreen" must be a boolean.')
-    }
-    fullscreen.value = isFullscreen
-    return
-  }
-  fullscreen.value = !fullscreen.value
-}
-
 const reset = (silent: boolean) => {
   const resetFn = () => {
     localStorage.clear()
@@ -915,16 +846,6 @@ watch(
   () => editor.value,
   () => {
     const unsetFormatPainter = () => editor.value?.commands.unsetFormatPainter()
-    const bindEscKey = () => {
-      useHotkeys('esc', () => {
-        if (page.value.preview) {
-          page.value.preview.enabled = false
-        }
-        if (fullscreen.value) {
-          fullscreen.value = false
-        }
-      })
-    }
     editor.value?.on('focus', () => {
       useHotkeys('esc', unsetFormatPainter)
       useHotkeys('ctrl+s,command+s', () => {
@@ -994,7 +915,6 @@ defineExpose({
   print,
   focus,
   blur,
-  toggleFullscreen,
   reset,
   destroy,
   focusBookmark,
@@ -1048,13 +968,6 @@ defineExpose({
     .umo-toolbar {
       display: none;
     }
-  }
-  &.umo-editor-is-fullscreen {
-    position: fixed !important;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
   }
 }
 </style>
