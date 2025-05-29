@@ -3,9 +3,6 @@
     <div class="box">
       <umo-editor ref="editorRef" v-bind="options" />
     </div>
-    <!-- <div class="box">
-      <umo-editor editor-key="testaaa" :toolbar="{ defaultMode: 'classic' }" />
-    </div> -->
   </div>
 </template>
 
@@ -29,8 +26,6 @@ const templates = [
 ]
 const options = $ref({
   toolbar: {
-    // defaultMode: 'classic',
-    // menus: ['base'],
     importWord: {
       enabled: true,
       async onCustomImportMethod() {
