@@ -135,6 +135,7 @@ const defaultToolbarMenus = [
   { label: t('toolbar.base'), value: 'base' },
   { label: t('toolbar.insert'), value: 'insert' },
   { label: t('toolbar.tools'), value: 'tools' },
+  { label: t('toolbar.page'), value: 'page' },
   { label: t('toolbar.export'), value: 'export' },
 ]
 let toolbarMenus = defaultToolbarMenus

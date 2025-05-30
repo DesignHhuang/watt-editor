@@ -70,7 +70,6 @@ import type {
   WatermarkOption,
 } from '@/types'
 import { contentTransform } from '@/utils/content-transform'
-import { consoleCopyright } from '@/utils/copyright'
 import { getOpitons } from '@/utils/options'
 import { shortId } from '@/utils/short-id'
 
@@ -101,7 +100,6 @@ const emits = defineEmits([
   'changed:locale',
   'changed:theme',
   'contentError',
-  'print',
   'focus',
   'blur',
   'saved',
@@ -176,7 +174,6 @@ watch(
 // Lifecycle Hooks
 onMounted(() => {
   setTheme(options.value.theme)
-  setTimeout(consoleCopyright)
 })
 onBeforeUnmount(() => {
   clearAutoSaveInterval()
@@ -691,16 +688,6 @@ const focus = (position = 'start', options = { scrollIntoView: true }) =>
 
 const blur = () => editor.value?.chain().blur().run()
 
-const print = () => {
-  const { toolbar, document } = options.value
-  if (toolbar?.disableMenuItems.includes('print') || editor.value?.isEmpty) {
-    return
-  }
-  if (!document?.readOnly) {
-    printing.value = true
-  }
-}
-
 const reset = (silent: boolean) => {
   const resetFn = () => {
     localStorage.clear()
@@ -853,17 +840,11 @@ watch(
         unsetFormatPainter()
       })
       useHotkeys('ctrl+p,command+p', () => {
-        print()
         unsetFormatPainter()
       })
-      useHotkeys('ctrl+f, command+f', () => {
-        searchReplace.value = true
-      })
     })
-    bindEscKey()
     editor.value?.on('blur', () => {
       removeAllHotkeys()
-      bindEscKey()
     })
   },
 )
@@ -912,7 +893,6 @@ defineExpose({
       options.value.document.readOnly = readOnly
     }
   },
-  print,
   focus,
   blur,
   reset,
