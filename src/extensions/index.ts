@@ -40,7 +40,6 @@ import Mention from './mention'
 import getUsersSuggestion from './mention/suggestion'
 import NodeAlign from './node-align'
 import OrderedList from './ordered-list'
-import PageBreak from './page-break'
 import Selection from './selection'
 import Tag from './tag'
 import TextAlign from './text-align'
@@ -119,9 +118,6 @@ export const getDefaultExtensions = ({
         Bookmark.configure({
             class: 'umo-editor-bookmark',
         }),
-
-        // 页面
-        PageBreak,
 
         // 其他
         Mention.configure({

@@ -78,20 +78,6 @@
           <slot name="toolbar_tools" toolbar-mode="classic" />
         </div>
       </template>
-      <template v-if="currentMenu === 'page'">
-        <div class="umo-virtual-group">
-          <menus-toolbar-page-margin />
-          <menus-toolbar-page-size />
-          <menus-toolbar-page-orientation />
-        </div>
-        <div class="umo-virtual-group">
-          <menus-toolbar-page-break />
-          <menus-toolbar-page-background v-if="!disableItem('background')" />
-        </div>
-        <div class="virtual-group is-slot">
-          <slot name="toolbar_page" toolbar-mode="classic" />
-        </div>
-      </template>
       <template v-if="currentMenu === 'export'">
         <div class="umo-virtual-group">
           <menus-toolbar-export-image v-if="!disableItem('exportImage')" />

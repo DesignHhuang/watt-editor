@@ -108,9 +108,6 @@ const dropdownVisible = (visible: boolean) => {
       &-ProseMirror-gapcursor {
         margin-top: 5px;
       }
-      &-pageBreak {
-        margin-top: -6px;
-      }
     }
     .umo-menu-button {
       background-color: var(--umo-page-background);

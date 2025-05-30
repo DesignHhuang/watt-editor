@@ -118,20 +118,6 @@
         "emoji": "Emoji",
         "file": "File",
         "hardBreak": "Line Break",
-        "hr": {
-            "text": "Divider",
-            "title": "Divider Style",
-            "color": "Divider Color",
-            "signle": "Single Line",
-            "double": "Double Thin Lines",
-            "dotted": "Dotted Line",
-            "dashed": "Dashed Line",
-            "dashedDouble": "Double Dashed Line",
-            "signleBold": "Thick Line",
-            "doubleBoldTop": "Thick & Thin Lines (Top)",
-            "doubleBoldBottom": "Thin & Thick Lines (Bottom)",
-            "wavy": "Wavy Line"
-        },
         "image": "Image",
         "link": {
             "text": "Link",
@@ -146,13 +132,9 @@
             "open": "Open Link",
             "edit": "Edit Link"
         },
-        "math": "Mathematics",
-        "columns": "Columns",
         "tag": "Tag",
         "callout": "Callout",
         "mention": "Mention",
-        "symbol": "Symbol",
-        "textBox": "Text Box",
         "video": "Video"
     },
     "tools": {

@@ -114,6 +114,7 @@
         "undo": "撤消"
     },
     "insert": {
+        "video": "视频",
         "codeBlock": "代码块",
         "date": "日期",
         "emoji": "表情",
@@ -133,22 +134,9 @@
             "open": "打开链接",
             "edit": "编辑链接"
         },
-        "math": "数学公式",
-        "columns": "分栏",
         "tag": "标签",
         "callout": "高亮块",
-        "mention": "提及某人",
-        "bookmark": {
-            "text": "书签",
-            "set": "设置书签",
-            "ok": "确定",
-            "textName": "书签名称",
-            "placeholder": "请输入书签名称...",
-            "show": "显示书签",
-            "actions": "操作",
-            "delete": "删除书签",
-            "emptyError": "请输入书签名称或者选择书签"
-        }
+        "mention": "提及某人"
     },
     "tools": {
         "barcode": {
