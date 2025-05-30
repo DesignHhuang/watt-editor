@@ -30,6 +30,21 @@ const defaultOptions: UmoEditorOptions = {
         defaultMode: 'classic',
         menus: ['base', 'insert', 'tools', 'export'],
         disableMenuItems: [],
+        importWord: {
+            enabled: true,
+            maxSize: 1024 * 1024 * 5, // 100M
+            options: {},
+            useCustomMethod: false,
+            async onCustomImportMethod() {
+                return await new Promise((_, reject) => {
+                    reject(
+                        new Error(
+                            'Key "toolbar": Key "importWord": Key "onCustomImportMethod": Please set the onCustomImportMethod method',
+                        ),
+                    )
+                })
+            },
+        },
     },
     page: {
         defaultMargin: {
