@@ -87,9 +87,7 @@
               size="small"
               :options="selectOptions"
               :popup-props="{
-                overlayClassName: attrs['overlay-class-name'] as
-                  | string
-                  | undefined,
+                overlayClassName: attrs['overlay-class-name'],
                 popperOptions: {
                   modifiers: [
                     { name: 'offset', options: { offset: [-22, 0] } },
@@ -99,7 +97,7 @@
                 destroyOnClose: true,
                 attach: container,
               }"
-              @click="attrs.onChange as any"
+              @click="attrs.onChange"
             >
               <span class="umo-button-icon-arrow umo-button-handle">
                 <icon name="arrow-down" />
@@ -115,14 +113,12 @@
             size="small"
             :options="selectOptions"
             :popup-props="{
-              overlayClassName: attrs['overlay-class-name'] as
-                | string
-                | undefined,
+              overlayClassName: attrs['overlay-class-name'],
               onVisibleChange: popupVisileChange,
               destroyOnClose: true,
               attach: container,
             }"
-            @click="attrs.onChangeas as any"
+            @click="attrs.onChangeas"
           >
             <t-button
               class="umo-menu-button has-arrow"
@@ -153,12 +149,6 @@
                 <kbd v-if="shortcutText" class="umo-button-kbd">{{
                   getShortcut(shortcutText)
                 }}</kbd>
-                <span
-                  v-if="$toolbar.mode === 'ribbon'"
-                  class="umo-button-icon-arrow"
-                >
-                  <icon name="arrow-down" />
-                </span>
               </div>
               <span
                 v-if="$toolbar.mode === 'classic'"
@@ -233,14 +223,6 @@
                 modifiers: [{ name: 'offset', options: { offset: [-22, 0] } }],
               }"
             >
-              <span
-                v-if="$toolbar.mode === 'ribbon'"
-                ref="popupHandleRef"
-                class="umo-button-icon-arrow umo-button-handle"
-                @click="togglePopup(!popupVisible)"
-              >
-                <icon name="arrow-down" />
-              </span>
               <template #content>
                 <div ref="popupContentRef" class="umo-popup-content">
                   <slot name="content" />
@@ -295,12 +277,6 @@
                 <kbd v-if="shortcutText" class="umo-button-kbd">{{
                   getShortcut(shortcutText)
                 }}</kbd>
-                <span
-                  v-if="$toolbar.mode === 'ribbon'"
-                  class="umo-button-icon-arrow"
-                >
-                  <icon name="arrow-down" />
-                </span>
               </div>
               <span
                 v-if="$toolbar.mode === 'classic'"
