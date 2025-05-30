@@ -63,12 +63,7 @@ import { getSelectionNode, getSelectionText } from '@/extensions/selection'
 import { i18n } from '@/i18n'
 import { propsOptions } from '@/options'
 import type { PageOption, UmoEditorOptions } from '@/types'
-import type {
-  AutoSaveOptions,
-  DocumentOptions,
-  SupportedLocale,
-  WatermarkOption,
-} from '@/types'
+import type { DocumentOptions, SupportedLocale } from '@/types'
 import { contentTransform } from '@/utils/content-transform'
 import { getOpitons } from '@/utils/options'
 import { shortId } from '@/utils/short-id'
@@ -394,19 +389,6 @@ const setDocument = (params: DocumentOptions) => {
       throw new Error('"params.spellcheck" must be a boolean.')
     }
     $document.value.enableSpellcheck = params.enableSpellcheck
-  }
-  if (params.autoSave) {
-    if (!isBoolean(params.autoSave.enabled)) {
-      throw new Error('"params.autoSave.enabled" must be a boolean.')
-    }
-    if (!isNumber(params.autoSave.interval)) {
-      throw new Error('"params.autoSave.interval" must be a number.')
-    }
-
-    options.value.document ??= {} as DocumentOptions
-    options.value.document.autoSave ??= {} as AutoSaveOptions
-    options.value.document.autoSave.enabled = params.autoSave.enabled
-    options.value.document.autoSave.interval = params.autoSave.interval
   }
 }
 

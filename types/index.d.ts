@@ -56,11 +56,6 @@ export interface ToolbarOptions {
     disableMenuItems: string[]
 }
 
-export interface AutoSaveOptions {
-    enabled: boolean
-    interval: number
-}
-
 export interface DocumentOptions {
     id?: string
     title: string
@@ -77,7 +72,6 @@ export interface DocumentOptions {
     typographyRules?: Record<string, unknown>
     editorProps?: Record<string, unknown>
     parseOptions?: Record<string, unknown>
-    autoSave?: AutoSaveOptions
 }
 
 export type LocaleLabel =

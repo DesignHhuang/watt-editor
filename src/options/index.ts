@@ -60,10 +60,6 @@ const defaultOptions: UmoEditorOptions = {
         parseOptions: {
             preserveWhitespace: 'full',
         },
-        autoSave: {
-            enabled: true,
-            interval: 300000,
-        },
     },
     cdnUrl: 'https://oss.wattsonic.com/wattteam/svgs',
     file: {
@@ -424,23 +420,6 @@ const ojbectSchema = new ObjectSchema({
                 merge: 'replace',
                 validate: 'object',
                 required: false,
-            },
-            autoSave: {
-                required: false,
-                merge: 'replace',
-                validate: 'object',
-                schema: {
-                    enabled: {
-                        merge: 'replace',
-                        validate: 'boolean',
-                        required: false,
-                    },
-                    interval: {
-                        merge: 'replace',
-                        validate: 'number',
-                        required: false,
-                    },
-                },
             },
         },
     },
