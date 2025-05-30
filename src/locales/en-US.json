@@ -132,6 +132,7 @@
             "open": "Open Link",
             "edit": "Edit Link"
         },
+        "columns": "Columns",
         "tag": "Tag",
         "callout": "Callout",
         "mention": "Mention",

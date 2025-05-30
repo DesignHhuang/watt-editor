@@ -8,6 +8,7 @@ import Typography from '@tiptap/extension-typography'
 import Underline from '@tiptap/extension-underline'
 import StarterKit from '@tiptap/starter-kit'
 import type { Editor, Extension } from '@tiptap/vue-3'
+import { ColumnsExtension as Columns } from '@tiptap-extend/columns'
 import NodeRange from '@tiptap-pro/extension-node-range'
 
 import type { UmoEditorOptions } from '@/types'
@@ -82,6 +83,7 @@ export const getDefaultExtensions = ({
         File,
         CodeBlock,
         Tag,
+        Columns,
 
         // 其他
         Mention.configure({
