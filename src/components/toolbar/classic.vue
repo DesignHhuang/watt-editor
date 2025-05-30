@@ -35,9 +35,6 @@
           <menus-toolbar-base-italic />
           <menus-toolbar-base-underline />
           <menus-toolbar-base-strike />
-          <menus-toolbar-base-color />
-          <menus-toolbar-base-background-color />
-          <menus-toolbar-base-highlight v-if="!disableItem('highlight')" />
         </div>
         <div class="umo-virtual-group">
           <menus-toolbar-base-ordered-list
@@ -55,37 +52,15 @@
       </template>
       <template v-if="currentMenu === 'insert'">
         <div class="umo-virtual-group">
-          <menus-toolbar-insert-link v-if="!disableItem('link')" />
           <menus-toolbar-insert-image v-if="!disableItem('image')" />
           <menus-toolbar-insert-video v-if="!disableItem('video')" />
           <menus-toolbar-insert-file v-if="!disableItem('file')" />
           <menus-toolbar-insert-code-block v-if="!disableItem('code-block')" />
           <menus-toolbar-insert-tag v-if="!disableItem('tag')" />
-          <menus-toolbar-insert-callout v-if="!disableItem('callout')" />
           <menus-toolbar-insert-mention v-if="!disableItem('mention')" />
         </div>
         <div class="virtual-group is-slot">
           <slot name="toolbar_insert" toolbar-mode="classic" />
-        </div>
-      </template>
-      <template v-if="currentMenu === 'tools'">
-        <div class="umo-virtual-group">
-          <menus-toolbar-tools-qrcode v-if="!disableItem('qrcode')" />
-          <menus-toolbar-tools-barcode v-if="!disableItem('barcode')" />
-          <menus-toolbar-tools-signature v-if="!disableItem('signature')" />
-        </div>
-        <div class="virtual-group is-slot">
-          <slot name="toolbar_tools" toolbar-mode="classic" />
-        </div>
-      </template>
-      <template v-if="currentMenu === 'export'">
-        <div class="umo-virtual-group">
-          <menus-toolbar-export-image v-if="!disableItem('exportImage')" />
-          <menus-toolbar-export-pdf v-if="!disableItem('exportPDF')" />
-          <menus-toolbar-export-text v-if="!disableItem('exportText')" />
-        </div>
-        <div class="virtual-group is-slot">
-          <slot name="toolbar_export" toolbar-mode="classic" />
         </div>
       </template>
     </div>

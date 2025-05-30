@@ -1,39 +1,24 @@
 import Bold from '@tiptap/extension-bold'
-import CharacterCount from '@tiptap/extension-character-count'
-import Color from '@tiptap/extension-color'
 import Dropcursor from '@tiptap/extension-dropcursor'
 import Focus from '@tiptap/extension-focus'
-import FontFamily from '@tiptap/extension-font-family'
-import Highlight from '@tiptap/extension-highlight'
 import Placeholder from '@tiptap/extension-placeholder'
-import Subscript from '@tiptap/extension-subscript'
-import Superscript from '@tiptap/extension-superscript'
 import TaskItem from '@tiptap/extension-task-item'
 import TaskList from '@tiptap/extension-task-list'
-import TextColor from '@tiptap/extension-text-style'
 import Typography from '@tiptap/extension-typography'
 import Underline from '@tiptap/extension-underline'
 import StarterKit from '@tiptap/starter-kit'
 import type { Editor, Extension } from '@tiptap/vue-3'
 import NodeRange from '@tiptap-pro/extension-node-range'
-import { getHierarchicalIndexes } from '@tiptap-pro/extension-table-of-contents'
-import { TableOfContents } from '@tiptap-pro/extension-table-of-contents'
 
 import type { UmoEditorOptions } from '@/types'
-import { shortId } from '@/utils/short-id'
 
 import BulletList from './bullet-list'
-import Callout from './callout'
 import CodeBlock from './code-block'
 import File from './file'
 import FileHandler from './file-handler'
 import FontSize from './font-size'
-import FormatPainter from './format-painter'
 import Image from './image'
-import Indent from './indent'
 import LineHeight from './line-height'
-import Link from './link'
-import Margin from './margin'
 import Mention from './mention'
 import getUsersSuggestion from './mention/suggestion'
 import NodeAlign from './node-align'
@@ -53,7 +38,7 @@ export const getDefaultExtensions = ({
     options: { value: UmoEditorOptions }
     uploadFileMap: { value: any }
 }) => {
-    const { dicts, page, document: doc, users, file } = options.value
+    const { dicts, document: doc, users, file } = options.value
 
     const extensions = [
         StarterKit.configure({
@@ -71,21 +56,11 @@ export const getDefaultExtensions = ({
             className: 'umo-node-focused',
             mode: 'all',
         }),
-        FormatPainter,
-        FontFamily,
         FontSize,
         Bold.extend({
             renderHTML: ({ HTMLAttributes }) => ['b', HTMLAttributes, 0],
         }),
         Underline,
-        Subscript,
-        Superscript,
-        Color,
-        TextColor,
-        Highlight.configure({
-            multicolor: true,
-        }),
-        Indent,
         BulletList,
         OrderedList,
         TextAlign,
@@ -102,14 +77,11 @@ export const getDefaultExtensions = ({
                 dicts?.lineHeights?.find((item: any) => item.default)?.value ??
                 undefined,
         }),
-        Margin,
-        Link,
         Image,
         Video,
         File,
         CodeBlock,
         Tag,
-        Callout,
 
         // 其他
         Mention.configure({
@@ -117,18 +89,7 @@ export const getDefaultExtensions = ({
         }),
         Selection,
         NodeRange,
-        TableOfContents.configure({
-            getIndex: getHierarchicalIndexes,
-            scrollParent: () =>
-                document.querySelector(
-                    `${container} .umo-zoomable-container`,
-                ) as HTMLElement,
-            getId: () => shortId(6),
-        }),
         Typography.configure(doc?.typographyRules),
-        CharacterCount.configure({
-            limit: doc?.characterLimit !== 0 ? doc?.characterLimit : undefined,
-        }),
         FileHandler.configure({
             allowedMimeTypes: file?.allowedMimeTypes,
             onPaste(editor: Editor, files: any) {

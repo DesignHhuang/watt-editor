@@ -9,7 +9,7 @@
     v-bind="$attrs"
   >
     <template #header>
-      <icon v-if="$attrs.icon" :name="$attrs.icon as string" />
+      <icon v-if="$attrs.icon" :name="$attrs.icon" />
       <span>{{ $attrs.header }}</span>
     </template>
     <slot />
@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
+defineProps({
   visible: {
     type: Boolean,
     default: false,

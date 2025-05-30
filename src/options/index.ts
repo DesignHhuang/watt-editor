@@ -25,7 +25,7 @@ const defaultOptions: UmoEditorOptions = {
     dicts: defaultDicts,
     toolbar: {
         defaultMode: 'classic',
-        menus: ['base', 'insert', 'tools', 'export'],
+        menus: ['base', 'insert'],
         disableMenuItems: [],
         importWord: {
             enabled: true,
