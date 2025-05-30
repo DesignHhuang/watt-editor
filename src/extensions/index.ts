@@ -1,4 +1,3 @@
-import SearchReplace from '@sereneinserenade/tiptap-search-and-replace'
 import Bold from '@tiptap/extension-bold'
 import CharacterCount from '@tiptap/extension-character-count'
 import Color from '@tiptap/extension-color'
@@ -104,9 +103,6 @@ export const getDefaultExtensions = ({
                 undefined,
         }),
         Margin,
-        SearchReplace.configure({
-            searchResultClass: 'umo-search-result',
-        }),
         Link,
         Image,
         Video,

@@ -78,13 +78,6 @@
           padding-left: 8px;
           padding-right: 8px;
         }
-        &.umo-page-break {
-          background-color: var(--umo-primary-color);
-          color: var(--umo-primary-color);
-          &::after {
-            border-color: var(--umo-primary-color);
-          }
-        }
 
         .umo-select-outline {
           outline: solid 1px var(--umo-primary-color);
@@ -216,130 +209,6 @@
     margin: 0;
   }
 
-  table {
-    border-collapse: collapse;
-    table-layout: fixed;
-    width: 100%;
-    margin: 0;
-    overflow: hidden;
-    page-break-inside: auto;
-    margin-left: auto;
-    margin-right: auto;
-    tr {
-      page-break-inside: avoid;
-      page-break-after: auto;
-    }
-
-    // thead {
-    //   display: table-header-group;
-    // }
-    td,
-    th {
-      min-width: 1em;
-      border: 1px solid var(--umo-content-table-border-color);
-      padding: 3px 5px;
-      vertical-align: middle;
-      box-sizing: border-box;
-      position: relative;
-
-      > * {
-        margin-bottom: 0;
-      }
-
-      &[align='left-top'] {
-        vertical-align: top;
-        text-align: left;
-      }
-
-      &[align='center-top'] {
-        vertical-align: top;
-        text-align: center;
-      }
-
-      &[align='right-top'] {
-        vertical-align: middle;
-        text-align: right;
-      }
-
-      &[align='justify-top'] {
-        vertical-align: middle;
-        text-align: justify;
-      }
-
-      &[align='left-middle'] {
-        vertical-align: middle;
-        text-align: left;
-      }
-
-      &[align='center-middle'] {
-        vertical-align: middle;
-        text-align: center;
-      }
-
-      &[align='right-middle'] {
-        vertical-align: middle;
-        text-align: right;
-      }
-
-      &[align='justify-middle'] {
-        vertical-align: middle;
-        text-align: justify;
-      }
-
-      &[align='left-bottom'] {
-        vertical-align: bottom;
-        text-align: left;
-      }
-
-      &[align='center-bottom'] {
-        vertical-align: middle;
-        text-align: center;
-      }
-
-      &[align='right-bottom'] {
-        vertical-align: bottom;
-        text-align: right;
-      }
-
-      &[align='justify-bottom'] {
-        vertical-align: bottom;
-        text-align: justify;
-      }
-    }
-
-    th {
-      font-weight: bold;
-      text-align: left;
-      background-color: var(--umo-content-table-thead-background);
-    }
-
-    .selectedCell:after {
-      z-index: 2;
-      position: absolute;
-      content: '';
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      background: var(--umo-content-table-selected-background);
-      pointer-events: none;
-    }
-
-    .column-resize-handle {
-      position: absolute;
-      right: -1px;
-      top: 0;
-      bottom: -1px;
-      width: 3px;
-      background-color: var(--umo-primary-color);
-      pointer-events: none;
-    }
-
-    p {
-      margin: 0;
-    }
-  }
-
   .indent-1 {
     text-indent: 2em;
   }
@@ -358,12 +227,6 @@
 
   .indent-5 {
     text-indent: 10em;
-  }
-
-  .tableWrapper {
-    max-width: 100%;
-    overflow-x: auto;
-    .umo-scrollbar();
   }
 
   .resize-cursor {
@@ -481,31 +344,6 @@
     &--paragraph::before {
       content: '↵';
       color: var(--umo-content-invisible-break-color);
-    }
-  }
-
-  .Tiptap-mathematics {
-    &-editor {
-      background: var(--umo-content-node-selected-background);
-      font-family: monospace;
-      padding: 0.2em 0.5em;
-      // outline: solid 1px var(--umo-primary-color);
-    }
-
-    &-render {
-      cursor: pointer;
-      padding: 0 0.25em;
-      transition: background 0.2s;
-
-      &:hover {
-        background: var(--umo-content-node-selected-background);
-      }
-    }
-
-    &-editor,
-    &-render {
-      border-radius: 0.2em;
-      display: inline-block;
     }
   }
 
