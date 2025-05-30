@@ -17,7 +17,6 @@ import BulletList from './bullet-list'
 import CodeBlock from './code-block'
 import File from './file'
 import FileHandler from './file-handler'
-import FontSize from './font-size'
 import Image from './image'
 import LineHeight from './line-height'
 import Mention from './mention'
@@ -57,7 +56,6 @@ export const getDefaultExtensions = ({
             className: 'umo-node-focused',
             mode: 'all',
         }),
-        FontSize,
         Bold.extend({
             renderHTML: ({ HTMLAttributes }) => ['b', HTMLAttributes, 0],
         }),

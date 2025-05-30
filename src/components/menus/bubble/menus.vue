@@ -1,16 +1,6 @@
 <template>
   <template
-    v-if="
-      editor?.isActive('horizontalRule') ||
-      editor?.isActive('codeBlock') ||
-      editor?.getAttributes('image').error
-    "
-  >
-  </template>
-  <template
-    v-else-if="
-      editor?.isActive('image') && !editor?.getAttributes('image').error
-    "
+    v-if="editor?.isActive('image') && !editor?.getAttributes('image').error"
   >
     <menus-toolbar-base-align-left />
     <menus-toolbar-base-align-center />
@@ -63,7 +53,6 @@
     <menus-bubble-node-delete />
   </template>
   <template v-else>
-    <menus-toolbar-base-font-size :select="false" />
     <menus-toolbar-base-bold />
     <menus-toolbar-base-italic />
     <menus-toolbar-base-underline />
