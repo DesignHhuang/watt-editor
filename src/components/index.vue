@@ -17,7 +17,7 @@
         zIndex: 'unset',
       }"
     >
-      <header class="umo-toolbar">
+      <header class="umo-toolbar" v-if="$toolbar.mode === 'classic'">
         <toolbar
           :key="toolbarKey"
           @menu-change="(event: any) => emits('menuChange', event)"
@@ -297,16 +297,16 @@ const setTheme = (theme: 'light' | 'dark' | 'auto') => {
 }
 
 // Toolbar and Page Setup Methods
-const setToolbar = (params: { mode: 'classic' | 'ribbon'; show: boolean }) => {
+const setToolbar = (params: {
+  mode: 'classic' | 'ribbon' | 'hidden'
+  show: boolean
+}) => {
   if (!isRecord(params)) {
     throw new Error('params must be an object.')
   }
   if (params.mode) {
     if (!isString(params.mode)) {
       throw new Error('"params.mode" must be a string.')
-    }
-    if (!['classic', 'ribbon'].includes(params.mode)) {
-      throw new Error('"params.mode" must be one of "classic" or "ribbon".')
     }
     $toolbar.value.mode = params.mode
   }

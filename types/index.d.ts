@@ -51,7 +51,7 @@ export type ToolbarMenu =
     | 'custom'
 
 export interface ToolbarOptions {
-    defaultMode: 'classic' | 'ribbon'
+    defaultMode: 'classic' | 'ribbon' | 'hidden'
     menus: ToolbarMenu[]
     disableMenuItems: string[]
 }

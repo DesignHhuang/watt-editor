@@ -215,8 +215,8 @@ const ojbectSchema = new ObjectSchema({
         schema: {
             defaultMode: {
                 merge: 'replace',
-                validate(value: 'classic' | 'ribbon') {
-                    if (value && !['classic', 'ribbon'].includes(value)) {
+                validate(value: 'classic' | 'ribbon' | 'hidden') {
+                    if (value && !['classic', 'ribbon', 'hidden'].includes(value)) {
                         throw new Error(
                             'Key "toolbar": Key "defaultMode" must be one of "classic" or "ribbon".',
                         )

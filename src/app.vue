@@ -12,6 +12,10 @@ import Mentions from './mentions.vue'
 
 const editorRef = $ref(null)
 const options = $ref({
+  locale: 'en-US',
+  /* toolbar: {
+    defaultMode: 'hidden',
+  }, */
   document: {
     title: 'text',
     content: '',
