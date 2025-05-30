@@ -29,19 +29,12 @@
         <div class="umo-virtual-group">
           <menus-toolbar-base-undo />
           <menus-toolbar-base-redo />
-          <menus-toolbar-base-format-painter />
-          <menus-toolbar-base-clear-format />
         </div>
         <div class="umo-virtual-group">
-          <menus-toolbar-base-heading />
-          <menus-toolbar-base-font-family borderless />
-          <menus-toolbar-base-font-size borderless />
           <menus-toolbar-base-bold />
           <menus-toolbar-base-italic />
           <menus-toolbar-base-underline />
           <menus-toolbar-base-strike />
-          <menus-toolbar-base-subscript />
-          <menus-toolbar-base-superscript />
           <menus-toolbar-base-color />
           <menus-toolbar-base-background-color />
           <menus-toolbar-base-highlight v-if="!disableItem('highlight')" />
@@ -52,10 +45,6 @@
           />
           <menus-toolbar-base-bullet-list v-if="!disableItem('bullet-list')" />
           <menus-toolbar-base-task-list v-if="!disableItem('task-list')" />
-          <menus-toolbar-base-indent />
-          <menus-toolbar-base-outdent />
-          <menus-toolbar-base-line-height v-if="!disableItem('line-height')" />
-          <menus-toolbar-base-margin v-if="!disableItem('margin')" />
           <menus-toolbar-base-align-dropdown />
           <menus-toolbar-base-quote v-if="!disableItem('quote')" />
           <menus-toolbar-base-code v-if="!disableItem('code')" />
@@ -83,8 +72,6 @@
         <div class="umo-virtual-group">
           <menus-toolbar-tools-qrcode v-if="!disableItem('qrcode')" />
           <menus-toolbar-tools-barcode v-if="!disableItem('barcode')" />
-        </div>
-        <div class="umo-virtual-group">
           <menus-toolbar-tools-signature v-if="!disableItem('signature')" />
         </div>
         <div class="virtual-group is-slot">
