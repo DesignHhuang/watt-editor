@@ -54,18 +54,6 @@ export interface ToolbarOptions {
     defaultMode: 'classic' | 'ribbon'
     menus: ToolbarMenu[]
     disableMenuItems: string[]
-    importWord: {
-        enabled: boolean
-        maxSize: number
-        options: unknown
-        useCustomMethod?: boolean
-        onCustomImportMethod?: (file: File) => Promise<{
-            id: string
-            url: string
-            value: string
-            messages: { type: string; message: string }
-        }>
-    }
 }
 
 export interface AutoSaveOptions {

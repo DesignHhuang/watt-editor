@@ -116,7 +116,7 @@ const nodeStyle = $computed(() => {
 })
 
 const fileIcon = $computed(() => {
-  return `${options.value.cdnUrl}/icons/file/${getFileIcon(node.attrs.name)}.svg`
+  return `${options.value.cdnUrl}/${getFileIcon(node.attrs.name)}.svg`
 })
 
 let previewModal = $ref(false)

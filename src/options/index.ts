@@ -27,21 +27,6 @@ const defaultOptions: UmoEditorOptions = {
         defaultMode: 'classic',
         menus: ['base', 'insert'],
         disableMenuItems: [],
-        importWord: {
-            enabled: true,
-            maxSize: 1024 * 1024 * 5, // 100M
-            options: {},
-            useCustomMethod: false,
-            async onCustomImportMethod() {
-                return await new Promise((_, reject) => {
-                    reject(
-                        new Error(
-                            'Key "toolbar": Key "importWord": Key "onCustomImportMethod": Please set the onCustomImportMethod method',
-                        ),
-                    )
-                })
-            },
-        },
     },
     page: {
         defaultMargin: {
@@ -80,7 +65,7 @@ const defaultOptions: UmoEditorOptions = {
             interval: 300000,
         },
     },
-    cdnUrl: 'https://unpkg.com/@umoteam/editor-external@latest',
+    cdnUrl: 'https://oss.wattsonic.com/wattteam/svgs',
     file: {
         allowedMimeTypes: [],
         maxSize: 1024 * 1024 * 100, // 100M

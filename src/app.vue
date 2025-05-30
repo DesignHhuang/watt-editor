@@ -11,22 +11,12 @@ import { shortId } from '@/utils/short-id'
 
 const editorRef = $ref(null)
 const options = $ref({
-  toolbar: {
-    importWord: {
-      enabled: true,
-      async onCustomImportMethod() {
-        return await Promise.resolve({
-          value: '<p>测试导入word</p>',
-        })
-      },
-    },
-  },
   document: {
     title: '测试文档',
     content: localStorage.getItem('document.content') ?? '<p>测试文档</p>',
     characterLimit: 10000,
   },
-  cdnUrl: 'https://cdn.umodoc.com',
+  cdnUrl: 'https://oss.wattsonic.com/wattteam/svgs',
   file: {
     // allowedMimeTypes: [
     //   'application/pdf',
