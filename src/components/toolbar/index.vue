@@ -74,46 +74,8 @@
           </div>
         </template>
       </t-popup>
-      <t-dropdown
-        trigger="click"
-        size="small"
-        placement="bottom-right"
-        :popup-props="{
-          destroyOnClose: true,
-          attach: container,
-        }"
-        @click="toggleToolbarMode"
-      >
-        <t-button
-          class="umo-toolbar-actions-button"
-          variant="text"
-          size="small"
-        >
-          <icon name="expand-down" />
-          <span class="umo-button-text">{{ t('toolbar.toggle') }}</span>
-        </t-button>
-        <template #dropdown>
-          <t-dropdown-menu
-            v-for="item in editorModeOptions"
-            :key="item.value"
-            :content="item.label"
-            :value="item.value"
-            :divider="item.divider"
-            :active="item.value === $toolbar.mode"
-          >
-            <template #prefixIcon>
-              <icon :name="item.prefixIcon" />
-            </template>
-          </t-dropdown-menu>
-        </template>
-      </t-dropdown>
     </div>
   </div>
-  <tooltip v-else :content="t('toolbar.show')" placement="bottom-right">
-    <div class="umo-show-toolbar" @click="$toolbar.show = true">
-      <icon name="arrow-down" />
-    </div>
-  </tooltip>
 </template>
 
 <script setup lang="ts">

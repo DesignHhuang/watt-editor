@@ -930,24 +930,13 @@ defineExpose({
   color: var(--umo-text-color);
   font-family: var(--umo-font-family);
   position: relative !important;
-  .umo-toolbar,
-  .umo-footer {
+  .umo-toolbar {
     background-color: var(--umo-color-white);
   }
   .umo-main {
     flex: 1;
-    background-color: var(--umo-container-background);
+    background-color: #fff;
     overflow: hidden;
-  }
-  &.preview-mode {
-    &.laser-pointer {
-      .umo-main {
-        cursor: url('@/assets/images/laser-pointer.svg'), auto;
-      }
-    }
-    .umo-toolbar {
-      display: none;
-    }
   }
 }
 </style>
