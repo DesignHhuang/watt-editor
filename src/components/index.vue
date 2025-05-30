@@ -172,7 +172,6 @@ onMounted(() => {
   setTheme(options.value.theme)
 })
 onBeforeUnmount(() => {
-  clearAutoSaveInterval()
   destroy()
 })
 
@@ -197,42 +196,6 @@ watch(
   },
 )
 
-// 定时保存
-let contentUpdated = $ref(false)
-let isFirstUpdate = $ref(true)
-let autoSaveInterval = $ref<NodeJS.Timeout | null>(null)
-const clearAutoSaveInterval = () => {
-  if (autoSaveInterval !== null) {
-    clearInterval(autoSaveInterval)
-    autoSaveInterval = null
-  }
-}
-watch(
-  () => contentUpdated,
-  (val: boolean) => {
-    const { autoSave } = options.value.document ?? {}
-    if (!autoSave?.enabled) {
-      return
-    }
-    if (isFirstUpdate) {
-      isFirstUpdate = false
-      setTimeout(() => {
-        contentUpdated = false
-      })
-      return
-    }
-    if (!val) {
-      clearAutoSaveInterval()
-      return
-    }
-    autoSaveInterval = setInterval(() => {
-      void saveContent()
-      contentUpdated = false
-      clearAutoSaveInterval()
-    }, autoSave.interval)
-  },
-)
-
 watch(
   () => editor.value,
   () => {
@@ -245,7 +208,6 @@ watch(
     })
     editor.value.on('update', ({ editor }: any) => {
       emits('changed', { editor })
-      contentUpdated = true
     })
     editor.value.on('selectionUpdate', ({ editor }: any) => {
       emits('changed:selection', { editor })
@@ -277,43 +239,6 @@ watch(
     emits('changed:toolbar', { toolbar, oldToolbar })
   },
   { deep: true },
-)
-
-watch(
-  () => page.value.size,
-  (pageSize: any, oldPageSize: any) => {
-    emits('changed:pageSize', { pageSize, oldPageSize })
-  },
-  { deep: true },
-)
-
-watch(
-  () => page.value.margin,
-  (pageMargin: any, oldPageMargin: any) => {
-    emits('changed:pageMargin', { pageMargin, oldPageMargin })
-  },
-  { deep: true },
-)
-
-watch(
-  () => page.value.background,
-  (pageBackground: string, oldPageBackground: string) => {
-    emits('changed:pageBackground', { pageBackground, oldPageBackground })
-  },
-)
-
-watch(
-  () => page.value.orientation,
-  (pageOrientation: string, oldPageOrientation: string) => {
-    emits('changed:pageOrientation', { pageOrientation, oldPageOrientation })
-  },
-)
-
-watch(
-  () => page.value.zoomLevel,
-  (zoomLevel: number, oldZoomLevel: number) => {
-    emits('changed:pageZoom', { zoomLevel, oldZoomLevel })
-  },
 )
 
 // i18n Setup
@@ -428,69 +353,6 @@ const setPage = (params: {
       throw new Error('"params.background" must be a string.')
     }
     page.value.background = params.background
-  }
-}
-
-const setWatermark = (params: Partial<WatermarkOption>) => {
-  if (!isRecord(params)) {
-    throw new Error('params must be an object.')
-  }
-  if (!page.value.watermark) {
-    page.value.watermark = {} as WatermarkOption
-  }
-  if (isDefined(params.alpha)) {
-    if (!isNumber(params.alpha)) {
-      throw new Error('"params.alpha" must be a number.')
-    }
-    page.value.watermark.alpha = params.alpha
-  }
-  if (params.text) {
-    if (!isString(params.text)) {
-      throw new Error('"params.text" must be a string.')
-    }
-    if (params.text.length > 30) {
-      throw new Error('"params.text" must be less than 30 characters.')
-    }
-    page.value.watermark.text = params.text
-  }
-
-  if (params.type) {
-    if (!isString(params.type)) {
-      throw new Error('"params.type" must be a string.')
-    }
-    if (!['compact', 'spacious'].includes(params.type)) {
-      throw new Error('"params.type" must be one of "compact" or "spacious".')
-    }
-    page.value.watermark.type = params.type
-  }
-  if (params.fontColor) {
-    if (!isString(params.fontColor)) {
-      throw new Error('"params.fontColor" must be a string.')
-    }
-    page.value.watermark.fontColor = params.fontColor
-  }
-  if (params.fontSize) {
-    if (!isNumber(params.fontSize)) {
-      throw new Error('"params.fontSize" must be a number.')
-    }
-    page.value.watermark.fontSize = params.fontSize
-  }
-  if (params.fontFamily || params.fontFamily === null) {
-    if (params.fontFamily !== null && !isString(params.fontFamily)) {
-      throw new Error('"params.fontFamily" must be a string.')
-    }
-    page.value.watermark.fontFamily = params.fontFamily
-  }
-  if (params.fontWeight) {
-    if (!isString(params.fontWeight)) {
-      throw new Error('"params.fontWeight" must be a string.')
-    }
-    if (!['normal', 'bold', 'bolder'].includes(params.fontWeight)) {
-      throw new Error(
-        '"params.fontWeight" must be one of "normal", "bold" or "bolder".',
-      )
-    }
-    page.value.watermark.fontWeight = params.fontWeight
   }
 }
 
@@ -791,7 +653,6 @@ defineExpose({
   setOptions,
   setToolbar,
   setPage,
-  setWatermark,
   setDocument,
   setContent,
   insertContent,

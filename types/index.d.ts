@@ -133,6 +133,7 @@ export interface UmoEditorOptions {
     file?: FileOptions
     user?: Record<string, unknown>
     users?: UserItem[]
+    mentionComp?: Component,
     extensions?: Extension[]
     translations?: Record<string, unknown>
     onSave?: AsyncFunction

@@ -8,51 +8,45 @@
 
 <script setup lang="ts">
 import { shortId } from '@/utils/short-id'
+import Mentions from './mentions.vue'
 
 const editorRef = $ref(null)
 const options = $ref({
   document: {
-    title: '测试文档',
-    content: localStorage.getItem('document.content') ?? '<p>测试文档</p>',
+    title: 'text',
+    content: '',
     characterLimit: 10000,
   },
   cdnUrl: 'https://oss.wattsonic.com/wattteam/svgs',
-  file: {
-    // allowedMimeTypes: [
-    //   'application/pdf',
-    //   'image/svg+xml',
-    //   'video/mp4',
-    //   'audio/*',
-    // ],
-  },
-  user: {
-    id: 'umoeditor',
-    label: 'Umo Editor',
-    avatar: 'https://tdesign.gtimg.com/site/avatar.jpg',
-  },
+  file: {},
   users: [
-    { id: 'umodoc', label: 'Umo Team' },
-    { id: 'Cassielxd', label: 'Cassielxd' },
-    { id: 'Goldziher', label: "Na'aman Hirschfeld" },
-    { id: 'SerRashin', label: 'SerRashin' },
-    { id: 'ChenErik', label: 'ChenErik' },
-    { id: 'china-wangxu', label: 'china-wangxu' },
-    { id: 'Sherman Xu', label: 'xuzhenjun130' },
-    { id: 'testuser', label: '测试用户' },
+    { id: 'umodoc', label: 'Umo Team', position: 'developer', avatar: '' },
+    { id: 'Cassielxd', label: 'Cassielxd', position: 'developer', avatar: '' },
+    {
+      id: 'Goldziher',
+      label: "Na'aman Hirschfeld",
+      position: 'developer',
+      avatar: '',
+    },
+    { id: 'SerRashin', label: 'SerRashin', position: 'developer', avatar: '' },
+    { id: 'ChenErik', label: 'ChenErik', position: 'developer', avatar: '' },
+    {
+      id: 'china-wangxu',
+      label: 'china-wangxu',
+      position: 'developer',
+      avatar: '',
+    },
+    {
+      id: 'Sherman Xu',
+      label: 'xuzhenjun130',
+      position: 'developer',
+      avatar: '',
+    },
+    { id: 'testuser', label: '测试用户', position: 'developer', avatar: '' },
   ],
+  mentionComp: markRaw(Mentions),
   async onSave(content: string, page: number, document: { content: string }) {
     localStorage.setItem('document.content', document.content)
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const success = true
-        if (success) {
-          console.log('onSave', { content, page, document })
-          resolve('操作成功')
-        } else {
-          reject(new Error('操作失败'))
-        }
-      }, 2000)
-    })
   },
   async onFileUpload(file: File & { url?: string }) {
     if (!file) {

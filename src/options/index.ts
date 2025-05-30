@@ -42,9 +42,9 @@ const defaultOptions: UmoEditorOptions = {
         title: '',
         content: '',
         placeholder: {
-            en_US: 'Please enter the document content...',
-            zh_CN: '请输入文档内容...',
-            ru_RU: 'Пожалуйста, введите содержимое документа...',
+            en_US: 'Please enter the content...',
+            zh_CN: '请输入内容...',
+            ru_RU: 'Пожалуйста, введите документа...',
         },
         enableSpellcheck: true,
         enableMarkdown: true,
@@ -79,6 +79,7 @@ const defaultOptions: UmoEditorOptions = {
     },
     user: {},
     users: [],
+    mentionComp: null,
     extensions: [],
     translations: {
         en_US: {},
@@ -512,6 +513,11 @@ const ojbectSchema = new ObjectSchema({
                 }
             })
         },
+        required: false,
+    },
+    mentionComp: {
+        merge: 'replace',
+        validate() { },
         required: false,
     },
     extensions: {

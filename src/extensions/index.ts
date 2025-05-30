@@ -38,7 +38,7 @@ export const getDefaultExtensions = ({
     options: { value: UmoEditorOptions }
     uploadFileMap: { value: any }
 }) => {
-    const { dicts, document: doc, users, file } = options.value
+    const { dicts, document: doc, users, file, mentionComp } = options.value
 
     const extensions = [
         StarterKit.configure({
@@ -85,7 +85,7 @@ export const getDefaultExtensions = ({
 
         // 其他
         Mention.configure({
-            suggestion: getUsersSuggestion(users ?? []),
+            suggestion: getUsersSuggestion(users ?? [], mentionComp),
         }),
         Selection,
         NodeRange,
