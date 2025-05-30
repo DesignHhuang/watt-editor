@@ -928,7 +928,6 @@ defineExpose({
   display: flex;
   flex-direction: column;
   color: var(--umo-text-color);
-  font-family: var(--umo-font-family);
   position: relative !important;
   .umo-toolbar {
     background-color: var(--umo-color-white);
