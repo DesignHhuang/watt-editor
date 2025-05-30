@@ -69,15 +69,6 @@ body {
   .umo-button {
     user-select: none;
   }
-  .umo-color-picker__panel {
-    padding: var(--umo-popup-content-padding) !important;
-    .umo-color-picker__body {
-      padding: 0;
-      .umo-color-picker__swatches-wrap {
-        display: none;
-      }
-    }
-  }
   .umo-dialog,
   .t-dialog {
     --td-warning-color: var(--umo-warning-color);
@@ -172,21 +163,6 @@ body {
     }
   }
 
-  .umo-drawer {
-    &__mask {
-      --td-mask-active: var(--umo-mask-color);
-    }
-    &__close-btn {
-      color: rgba(0, 0, 0, 0.3);
-      &:hover {
-        color: rgba(0, 0, 0, 0.6);
-      }
-      .umo-icon {
-        font-size: 20px;
-      }
-    }
-  }
-
   .umo-radio-group--filled {
     --td-bg-color-component: var(--umo-button-hover-background);
   }
@@ -220,13 +196,6 @@ body {
     }
     .umo-is-disabled {
       background-color: transparent;
-    }
-  }
-  .umo-color-picker {
-    &__sliders-preview-inner {
-      border: solid 1px var(--umo-border-color);
-      box-sizing: border-box;
-      border-radius: 3px;
     }
   }
   .umo-image-viewer__modal {

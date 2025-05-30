@@ -21,10 +21,6 @@
     }
   }
 
-  &.format-painter {
-    cursor: url('@/assets/images/format-painter.svg'), text;
-  }
-
   .umo-editor {
     outline: none;
     counter-reset: title;
@@ -345,30 +341,6 @@
       content: '↵';
       color: var(--umo-content-invisible-break-color);
     }
-  }
-
-  .umo-color-highlighter {
-    white-space: nowrap;
-
-    &::before {
-      background-color: var(--color);
-      border: 1px solid rgba(128, 128, 128, 0.3);
-      border-radius: 2px;
-      content: ' ';
-      display: inline-block;
-      height: 1em;
-      margin-bottom: 0.15em;
-      margin-right: 0.1em;
-      vertical-align: middle;
-      width: 1em;
-    }
-  }
-
-  .column-block {
-    width: 100%;
-    display: grid;
-    grid-auto-flow: column;
-    gap: 12px;
   }
 
   .column {
