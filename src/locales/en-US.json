@@ -1,5 +1,4 @@
 {
-    "welcome": "%cThanks for using Umo Editor%cCurrent version: v{version}, More info: {homepage}",
     "toolbar": {
         "ribbon": "Professional",
         "classic": "Classic",
@@ -156,74 +155,6 @@
         "textBox": "Text Box",
         "video": "Video"
     },
-    "table": {
-        "addColumnAfter": "Insert Column After",
-        "addColumnBefore": "Insert Column Before",
-        "addRowAfter": "Insert Row Below",
-        "addRowBefore": "Insert Row Above",
-        "borderColor": "Border Color",
-        "cellAlign": {
-            "text": "Alignment",
-            "tip": "Cell Alignment",
-            "lt": "Top Left",
-            "ct": "Top Center",
-            "rt": "Top Right",
-            "jt": "Top Justify",
-            "lm": "Middle Left",
-            "cm": "Middle Center",
-            "rm": "Middle Right",
-            "jm": "Middle Justify",
-            "lb": "Bottom Left",
-            "cb": "Bottom Center",
-            "rb": "Bottom Right",
-            "jb": "Bottom Justify"
-        },
-        "cellBgColor": {
-            "text": "Background",
-            "tip": "Cell Background Color"
-        },
-        "deleteColumn": {
-            "text": "Delete Column",
-            "title": "Delete Table Column",
-            "message": "This operation will delete the selected table column. Continue?",
-            "delete": "Delete Now",
-            "success": "Deleted Successfully"
-        },
-        "deleteRow": {
-            "text": "Delete Row",
-            "title": "Delete Table Row",
-            "message": "This operation will delete the selected table row. Continue?",
-            "delete": "Delete Now",
-            "success": "Deleted Successfully"
-        },
-        "delete": {
-            "text": "Delete Table",
-            "title": "Delete Current Table",
-            "message": "This operation will delete the selected table. Continue?",
-            "delete": "Delete Now",
-            "success": "Deleted Successfully"
-        },
-        "fix": {
-            "text": "Fix Table",
-            "tip": "Click to automatically fix table when it's disordered"
-        },
-        "insert": {
-            "text": "Insert Table",
-            "tip": "Insert New Table",
-            "property": "Table Properties",
-            "withHeader": "Include Header",
-            "rows": "Number of Rows:",
-            "cols": "Number of Columns:",
-            "create": "Create Table"
-        },
-        "mergeCells": "Merge Cells",
-        "nextCell": "Next Cell",
-        "prevCell": "Previous Cell",
-        "splitCell": "Split Cell",
-        "toggleHeaderCell": "Header Cell",
-        "toggleHeaderRow": "Header Row",
-        "toggleHeaderColumn": "Header Column"
-    },
     "tools": {
         "barcode": {
             "text": "Barcode",
@@ -251,10 +182,6 @@
             "preview": "Preview",
             "renderError": "No preview available",
             "notEmpty": "Barcode content cannot be empty"
-        },
-        "chineseCase": {
-            "text": "Chinese Case",
-            "tip": "Chinese Case Conversion"
         },
         "qrcode": {
             "text": "QR Code",
@@ -285,44 +212,6 @@
             "reset": "Reset Options",
             "tip": "Please sign in the this area",
             "notEmpty": "No signature detected"
-        }
-    },
-    "page": {
-        "bg": {
-            "text": "Background",
-            "custom": "Custom Page Background",
-            "default": "Default",
-            "color1": "Eye-friendly\nGreen",
-            "color2": "Elegant\nYellow",
-            "color3": "Cloudy\nBlue",
-            "color4": "Sky Blue",
-            "color5": "Dark Night\nBlack"
-        },
-        "breakMarks": "Line Breaks",
-        "break": "Page Break",
-        "lineNumber": "Line Numbers",
-        "margin": "Margins",
-        "orientation": {
-            "text": "Orientation",
-            "landscape": "Landscape",
-            "portrait": "Portrait"
-        },
-        "preview": "Presentation",
-        "size": {
-            "text": "Size",
-            "cm": "CM",
-            "custom": "Custom Settings"
-        },
-        "watermark": {
-            "text": "Watermark",
-            "fontFamily": "Watermark Font",
-            "fontSize": "Watermark Size",
-            "fontColor": "Watermark Color",
-            "content": "Watermark Text",
-            "type": "Watermark Style",
-            "compact": "Compact",
-            "spacious": "Spacious",
-            "clear": "Remove Watermark"
         }
     },
     "export": {
@@ -418,13 +307,6 @@
             "rotateCC": "Rotate Counter-Clockwise 90°",
             "rotateC": "Rotate Clockwise 90°"
         },
-        "textBox": {
-            "background": "Background Color",
-            "border": "Border Settings",
-            "borderColor": "Border Color",
-            "borderStyle": "Border Style",
-            "noBorder": "No Border"
-        },
         "callout": {
             "removeEmoji": "Remove Emoji",
             "background": "Background Color"
@@ -435,51 +317,11 @@
             "color": "Text Color",
             "delete": "Delete Tag"
         },
-        "webpage": {
-            "clickable": "Toggle Clickable",
-            "open": "Open in a new window"
-        },
         "toFile": "Convert to File",
         "delete": "Delete"
     },
-    "pageOptions": {
-        "title": "Page Settings",
-        "size": {
-            "text": "Page Size",
-            "width": "Width:",
-            "height": "Height:",
-            "custom": "Custom"
-        },
-        "margin": {
-            "text": "Page Margins",
-            "default": "Default",
-            "narrow": "Narrow",
-            "moderate": "Moderate",
-            "wide": "Wide",
-            "top": "Top:",
-            "right": "Right:",
-            "bottom": "Bottom:",
-            "left": "Left:"
-        }
-    },
     "document": {
         "untitled": "Untitled Document"
-    },
-    "search": {
-        "text": "Search",
-        "title": "Search and Replace",
-        "searchText": "Search...",
-        "replaceText": "Replace...",
-        "caseSensitive": "Case Sensitive",
-        "search": "Search",
-        "replace": "Replace",
-        "replaceAll": "Replace All"
-    },
-    "toc": {
-        "title": "Document Map",
-        "show": "Document Map",
-        "hide": "Hide Document Map",
-        "empty": "No Document Map Available"
     },
     "spellcheck": {
         "enable": "Enable Spell Check",
@@ -511,51 +353,6 @@
         "title": "Reset Editor",
         "message": "This action will clear all editor settings and current content, and refresh the page. It's recommended to save your content before resetting. Are you sure you want to reset now?",
         "reset": "Reset"
-    },
-    "feedback": "Issues / Feedback",
-    "poweredBy": "Powered by Umo Editor",
-    "wordCount": {
-        "characters": "Characters",
-        "title": "Document Statistics",
-        "input": "Characters Typed",
-        "selection": "Selected Characters",
-        "limit": "Character Limit"
-    },
-    "preview": {
-        "title": "Presentation",
-        "disable": "Exit Presentation",
-        "countdown": {
-            "title": "Set Countdown",
-            "select": "Select",
-            "selectTip": "Select the countdown duration",
-            "custom": "Custom",
-            "hours": "Hours",
-            "minutes": "Minutes",
-            "seconds": "Seconds",
-            "whenEnd": "When End",
-            "showEndMessage": "Show end message",
-            "exitPreview": "Exit presentation mode",
-            "start": "Start",
-            "cancel": "Cancel",
-            "1hour": "1 Hour",
-            "45minutes": "45 Minutes",
-            "30minutes": "30 Minutes",
-            "15minutes": "15 Minutes",
-            "10minutes": "10 Minutes",
-            "5minutes": "5 Minutes",
-            "error": "Please set a valid countdown time",
-            "endCountdown": "Countdown has ended",
-            "remaining": "Remaining time"
-        },
-        "laserPointer": "Laser Pointer"
-    },
-    "zoom": {
-        "zoomIn": "Zoom In",
-        "zoomOut": "Zoom Out",
-        "level": "Zoom Level: ",
-        "autoWidth": "Best Fit Width",
-        "autoWidthError": "Error calculating automatic page width",
-        "reset": "Back to 100%"
     },
     "node": {
         "codeBlock": {
@@ -604,12 +401,6 @@
                 "message": "There is no content in the cache!"
             }
         }
-    },
-    "print": {
-        "text": "Print",
-        "title": "Print Document",
-        "message": "Before printing the document, please ensure that all images on the pages have finished loading. To ensure that all content is displayed correctly, please check the 'Background graphics' option in the print dialog box and set the 'Margins' to 'None.'",
-        "confirm": "Print Now"
     },
     "time": {
         "justNow": "Just now",
