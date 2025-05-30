@@ -61,7 +61,7 @@ watch(
 
 .umo-zoomable-container {
   flex: 1;
-  padding: 10px;
+  padding: 16px;
   scroll-behavior: smooth;
   .umo-page-content {
     transform-origin: 0 0;

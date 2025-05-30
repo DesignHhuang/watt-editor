@@ -89,7 +89,7 @@ defineExpose({
 <style lang="less">
 .umo-node-mention {
   box-decoration-break: clone;
-  color: var(--umo-primary-color);
+  color: #007aff;
   padding: 0.1em 0.2em;
   margin: 0 0.1em;
   border-radius: 0.2em;

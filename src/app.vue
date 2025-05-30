@@ -90,7 +90,9 @@ body {
   box-sizing: border-box;
   position: relative;
   width: 100%;
-  height: 100%;
+  max-height: 800px;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 html,
