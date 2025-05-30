@@ -23,7 +23,6 @@ import { TableOfContents } from '@tiptap-pro/extension-table-of-contents'
 import type { UmoEditorOptions } from '@/types'
 import { shortId } from '@/utils/short-id'
 
-import Bookmark from './bookmark'
 import BulletList from './bullet-list'
 import Callout from './callout'
 import CodeBlock from './code-block'
@@ -115,9 +114,6 @@ export const getDefaultExtensions = ({
         CodeBlock,
         Tag,
         Callout,
-        Bookmark.configure({
-            class: 'umo-editor-bookmark',
-        }),
 
         // 其他
         Mention.configure({
