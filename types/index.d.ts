@@ -8,15 +8,6 @@ export interface MarginOption {
     top: number
     bottom: number
 }
-export interface WatermarkOption {
-    type: string
-    alpha: number
-    fontColor: string
-    fontSize: number
-    fontFamily: string
-    fontWeight: string
-    text: string
-}
 export interface PageOption {
     defaultMargin?: MarginOption
     defaultOrientation?: string
