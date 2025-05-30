@@ -35,7 +35,6 @@
       <template #content>
         <menus-bubble-callout-builtin />
         <div class="umo-bubble-menu-divider"></div>
-        <menus-toolbar-insert-emoji @select-emoji="selectEmoji" />
         <menus-bubble-callout-emoji-remove
           v-if="editor.getAttributes('callout').icon"
         />
@@ -53,12 +52,6 @@ const { node, updateAttributes } = defineProps(nodeViewProps)
 
 const container = inject('container')
 const bubbleMenu = $ref(false)
-
-const selectEmoji = (emoji: string) => {
-  updateAttributes({
-    icon: emoji,
-  })
-}
 </script>
 
 <style lang="less" scoped>
