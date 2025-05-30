@@ -96,13 +96,6 @@ export type LocaleLabel =
     | string
     | { en_US: string; zh_CN: string; ru_RU: string }
 
-export interface PageSize {
-    label: LocaleLabel
-    width: number
-    height: number
-    default?: boolean
-}
-
 export interface Font {
     label: LocaleLabel
     value: string | null
@@ -113,17 +106,6 @@ export interface LineHeight {
     value: number
     default?: boolean
 }
-
-export interface GraphicSymbol {
-    label: LocaleLabel
-    items: string
-}
-
-export interface Emoji {
-    label: LocaleLabel
-    items: string
-}
-
 
 export interface UserItem {
     id: string
@@ -152,12 +134,9 @@ export interface UmoEditorOptions {
     theme: 'light' | 'dark'
     height: string
     dicts?: {
-        pageSizes: PageSize[]
         fonts: Font[]
         colors: string[]
         lineHeights: LineHeight[]
-        symbols: GraphicSymbol[]
-        emojis: Emoji[]
     }
     toolbar?: ToolbarOptions
     page: PageOption

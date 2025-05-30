@@ -135,9 +135,6 @@ watch(
   () => options.value.page,
   ({ defaultBackground, defaultMargin, defaultOrientation }: PageOption) => {
     page.value = {
-      size: options.value.dicts?.pageSizes.find(
-        (item: { default: boolean }) => item.default,
-      ),
       margin: defaultMargin,
       background: defaultBackground,
       orientation: defaultOrientation,
@@ -414,16 +411,6 @@ const setPage = (params: {
     if (!isString(params.size)) {
       throw new Error('"params.size" must be a string.')
     }
-    const size = options.value.dicts?.pageSizes.find(
-      (item: any) =>
-        item.label === params.size || l(item.label) === params.size,
-    )
-    if (!size) {
-      throw new Error(
-        `"params.size" must be one of ${options.value.dicts?.pageSizes.map((item: any) => l(item.label))}.`,
-      )
-    }
-    page.value.size = size
   }
   if (params.orientation) {
     if (!isString(params.orientation)) {

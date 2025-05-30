@@ -9,11 +9,8 @@ import {
 } from '@tool-belt/type-predicates'
 
 import type {
-    Emoji,
-    GraphicSymbol,
     LineHeight,
     LocaleLabel,
-    PageSize,
     UmoEditorOptions,
 } from '@/types'
 
@@ -221,84 +218,6 @@ const ojbectSchema = new ObjectSchema({
                         if (!isLocale(item.label)) {
                             throw new Error(
                                 `Key "dicts": Key "lineHeights[${index}]": Key "label" must be string, or a object with "en_US" and "zh_CN" properties.`,
-                            )
-                        }
-                    })
-                },
-                required: false,
-            },
-            symbols: {
-                merge: 'replace',
-                validate(value: GraphicSymbol[]) {
-                    if (value && !Array.isArray(value)) {
-                        throw new Error('Key "dicts": Key "symbols" must be a array.')
-                    }
-                    value.forEach((item, index: number) => {
-                        if (!item.label || typeof item.items !== 'string') {
-                            throw new Error(
-                                `Key "dicts": Key "symbols[${index}]": must be a array of objects with "label" and "items" properties.`,
-                            )
-                        }
-                        if (!isLocale(item.label)) {
-                            throw new Error(
-                                `Key "dicts": Key "symbols[${index}]": Key "label" must be string, or a object with "en_US" and "zh_CN" properties.`,
-                            )
-                        }
-                    })
-                },
-                required: false,
-            },
-            emojis: {
-                merge: 'replace',
-                validate(value: Emoji[]) {
-                    if (value && !Array.isArray(value)) {
-                        throw new Error('Key "dicts": Key "emojis" must be a array.')
-                    }
-                    value.forEach((item, index: number) => {
-                        if (!item.label || typeof item.items !== 'string') {
-                            throw new Error(
-                                `Key "dicts": Key "emojis[${index}]": must be a array of objects with "label" and "value" properties.`,
-                            )
-                        }
-                        if (!isLocale(item.label)) {
-                            throw new Error(
-                                `Key "dicts": Key "emojis[${index}]": Key "label" must be string, or a object with "en_US" and "zh_CN" properties.`,
-                            )
-                        }
-                    })
-                },
-                required: false,
-            },
-            pageSizes: {
-                merge: 'replace',
-                validate(value: PageSize[]) {
-                    if (value && !Array.isArray(value)) {
-                        throw new Error('Key "dicts": Key "pageSizes": must be a array.')
-                    }
-                    if (!value.find((item) => item.default)) {
-                        throw new Error(
-                            'Key "dicts": Key "pageSizes": please set a default value.',
-                        )
-                    }
-                    value.forEach((item, index) => {
-                        if (!item.label || item.label === '') {
-                            throw new Error(
-                                `Key "dicts": Key "pageSizes[${index}]" Key: "label" cannot be empty.`,
-                            )
-                        }
-                        if (!isLocale(item.label)) {
-                            throw new Error(
-                                `Key "dicts": Key "pageSizes[${index}]": Key "label" must be string, or a object with "en_US" and "zh_CN" properties.`,
-                            )
-                        }
-                        if (!isNumber(item.width)) {
-                            throw new Error(
-                                `Key "dicts": Key "pageSizes[${index}]" Key: "width" must be a number.`,
-                            )
-                        }
-                        if (!isNumber(item.height)) {
-                            throw new Error(
-                                `Key "dicts": Key "pageSizes[${index}]" Key: "height" must be a number.`,
                             )
                         }
                     })
