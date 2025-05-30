@@ -9,7 +9,6 @@ import Highlight from '@tiptap/extension-highlight'
 import Placeholder from '@tiptap/extension-placeholder'
 import Subscript from '@tiptap/extension-subscript'
 import Superscript from '@tiptap/extension-superscript'
-import TableRow from '@tiptap/extension-table-row'
 import TaskItem from '@tiptap/extension-task-item'
 import TaskList from '@tiptap/extension-task-list'
 import TextColor from '@tiptap/extension-text-style'
@@ -43,9 +42,6 @@ import NodeAlign from './node-align'
 import OrderedList from './ordered-list'
 import PageBreak from './page-break'
 import Selection from './selection'
-import Table from './table'
-import TableCell from './table/cell'
-import TableHeader from './table/header'
 import Tag from './tag'
 import TextAlign from './text-align'
 import typeWriter from './type-writer'
@@ -123,12 +119,6 @@ export const getDefaultExtensions = ({
         Bookmark.configure({
             class: 'umo-editor-bookmark',
         }),
-
-        // 表格
-        Table,
-        TableRow,
-        TableHeader,
-        TableCell,
 
         // 页面
         PageBreak,
