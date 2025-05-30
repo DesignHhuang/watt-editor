@@ -14,6 +14,12 @@
       options.document?.enableSpellcheck && $document.enableSpellcheck
     "
   />
+  <template v-if="editor && !destroyed && editor.isEditable">
+    <menus-bubble
+      v-if="options.document?.enableBubbleMenu"
+      v-show="!editor?.view?.painter?.enabled && !editor?.isEmpty"
+    />
+  </template>
 </template>
 
 <script setup lang="ts">
@@ -22,6 +28,7 @@ import { Editor, EditorContent } from '@tiptap/vue-3'
 import { getDefaultExtensions, inputAndPasteRules } from '@/extensions'
 import { contentTransform } from '@/utils/content-transform'
 
+const destroyed = inject('destroyed')
 const options = inject('options')
 const uploadFileMap = inject('uploadFileMap')
 

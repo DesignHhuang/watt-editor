@@ -56,7 +56,6 @@
           <menus-toolbar-insert-video v-if="!disableItem('video')" />
           <menus-toolbar-insert-file v-if="!disableItem('file')" />
           <menus-toolbar-insert-code-block v-if="!disableItem('code-block')" />
-          <menus-toolbar-insert-tag v-if="!disableItem('tag')" />
           <menus-toolbar-insert-columns v-if="!disableItem('columns')" />
           <menus-toolbar-insert-mention v-if="!disableItem('mention')" />
         </div>
