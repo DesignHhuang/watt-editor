@@ -1,7 +1,7 @@
 <template>
   <div class="examples">
     <div class="box">
-      <umo-editor ref="editorRef" v-bind="options" />
+      <watt-editor ref="editorRef" v-bind="options" />
     </div>
   </div>
 </template>
