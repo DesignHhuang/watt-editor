@@ -625,7 +625,6 @@ watch(
 )
 
 // Methods Exposed to Descendants
-provide('saveContent', saveContent)
 provide('setLocale', setLocale)
 provide('reset', reset)
 
