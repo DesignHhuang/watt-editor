@@ -17,8 +17,6 @@ import Typography from '@tiptap/extension-typography'
 import Underline from '@tiptap/extension-underline'
 import StarterKit from '@tiptap/starter-kit'
 import type { Editor, Extension } from '@tiptap/vue-3'
-import { ColumnsExtension as Columns } from '@tiptap-extend/columns'
-import Mathematics from '@tiptap-pro/extension-mathematics'
 import NodeRange from '@tiptap-pro/extension-node-range'
 import { getHierarchicalIndexes } from '@tiptap-pro/extension-table-of-contents'
 import { TableOfContents } from '@tiptap-pro/extension-table-of-contents'
@@ -26,9 +24,7 @@ import { TableOfContents } from '@tiptap-pro/extension-table-of-contents'
 import type { UmoEditorOptions } from '@/types'
 import { shortId } from '@/utils/short-id'
 
-import Audio from './audio'
 import Bookmark from './bookmark'
-import BreakMarks from './break-marks'
 import BulletList from './bullet-list'
 import Callout from './callout'
 import CodeBlock from './code-block'
@@ -36,8 +32,6 @@ import File from './file'
 import FileHandler from './file-handler'
 import FontSize from './font-size'
 import FormatPainter from './format-painter'
-import hr from './hr'
-import Iframe from './iframe'
 import Image from './image'
 import Indent from './indent'
 import LineHeight from './line-height'
@@ -54,7 +48,6 @@ import TableCell from './table/cell'
 import TableHeader from './table/header'
 import Tag from './tag'
 import TextAlign from './text-align'
-import TextBox from './text-box'
 import typeWriter from './type-writer'
 import Video from './video'
 
@@ -123,14 +116,8 @@ export const getDefaultExtensions = ({
         Link,
         Image,
         Video,
-        Audio,
         File,
-        TextBox,
         CodeBlock,
-        hr,
-        Iframe,
-        Mathematics,
-        Columns,
         Tag,
         Callout,
         Bookmark.configure({
@@ -214,7 +201,7 @@ export const inputAndPasteRules = (options: any) => {
         !options.value.document?.enableMarkdown ||
         !$document.value?.enableMarkdown
     ) {
-        enableRules = [Mathematics, Typography, Image as Extension]
+        enableRules = [Typography, Image as Extension]
     }
     return enableRules
 }

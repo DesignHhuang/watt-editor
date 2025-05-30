@@ -18,14 +18,6 @@
       <t-dropdown-item class="umo-block-menu-group-name" disabled>
         {{ t('blockMenu.insert') }}
       </t-dropdown-item>
-      <t-dropdown-item>
-        <menus-button
-          ico="table"
-          :text="t('table.insert.text')"
-          :tooltip="false"
-          @menu-click="editor?.chain().focus().insertTable().run()"
-        />
-      </t-dropdown-item>
       <t-dropdown-item v-if="!disableItem('image')">
         <menus-toolbar-insert-image :huge="false" :tooltip="false" />
       </t-dropdown-item>
@@ -45,17 +37,6 @@
       <t-dropdown-item v-if="!disableItem('callout')">
         <menus-toolbar-insert-callout :huge="false" :tooltip="false" />
       </t-dropdown-item>
-      <t-dropdown-item v-if="!disableItem('hr')">
-        <menus-button
-          ico="hr"
-          :text="t('insert.hr.text')"
-          :tooltip="false"
-          @menu-click="editor?.chain().focus().setHr({ type: 'signle' }).run()"
-        />
-      </t-dropdown-item>
-      <t-dropdown-item v-if="!disableItem('textBox')">
-        <menus-toolbar-insert-text-box :huge="false" :tooltip="false" />
-      </t-dropdown-item>
       <t-dropdown-item v-if="!disableItem('qrcode')">
         <menus-toolbar-tools-qrcode :huge="false" :tooltip="false" />
       </t-dropdown-item>
@@ -70,8 +51,6 @@
 </template>
 
 <script setup lang="ts">
-import type { Template } from '@/types'
-
 const emits = defineEmits<{
   dropdownVisible: (visible: boolean) => void
 }>()
