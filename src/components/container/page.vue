@@ -17,12 +17,6 @@
       :images="previewImages"
       @close="imageViewer.visible = false"
     />
-    <t-back-top
-      :container="`${container} .umo-zoomable-container`"
-      :visible-height="800"
-      size="small"
-      :offset="['25px', '30px']"
-    />
   </div>
 </template>
 
@@ -67,7 +61,7 @@ watch(
 
 .umo-zoomable-container {
   flex: 1;
-  padding: 20px 80px;
+  padding: 10px;
   scroll-behavior: smooth;
   .umo-page-content {
     transform-origin: 0 0;
@@ -88,16 +82,5 @@ watch(
   position: relative;
   box-sizing: border-box;
   flex-shrink: 1;
-}
-
-:deep(.umo-back-top) {
-  position: absolute;
-  &:hover {
-    opacity: 0.9;
-    background-color: var(--umo-color-white) !important;
-    .umo-back-top__icon {
-      color: var(--umo-primary-color);
-    }
-  }
 }
 </style>
