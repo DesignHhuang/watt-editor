@@ -774,17 +774,6 @@ const getContentExcerpt = (charLimit = 100, more = ' ...') => {
 watch(
   () => editor.value,
   () => {
-    const unsetFormatPainter = () => editor.value?.commands.unsetFormatPainter()
-    editor.value?.on('focus', () => {
-      useHotkeys('esc', unsetFormatPainter)
-      useHotkeys('ctrl+s,command+s', () => {
-        void saveContent()
-        unsetFormatPainter()
-      })
-      useHotkeys('ctrl+p,command+p', () => {
-        unsetFormatPainter()
-      })
-    })
     editor.value?.on('blur', () => {
       removeAllHotkeys()
     })
