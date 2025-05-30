@@ -11,7 +11,7 @@ import type { Editor, Extension } from '@tiptap/vue-3'
 import { ColumnsExtension as Columns } from '@tiptap-extend/columns'
 import NodeRange from '@tiptap-pro/extension-node-range'
 
-import type { UmoEditorOptions } from '@/types'
+import type { WattEditorOptions } from '@/types'
 
 import BulletList from './bullet-list'
 import CodeBlock from './code-block'
@@ -35,7 +35,7 @@ export const getDefaultExtensions = ({
     uploadFileMap,
 }: {
     container: string
-    options: { value: UmoEditorOptions }
+    options: { value: WattEditorOptions }
     uploadFileMap: { value: any }
 }) => {
     const { dicts, document: doc, users, file, mentionComp } = options.value

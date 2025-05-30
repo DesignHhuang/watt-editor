@@ -1,11 +1,11 @@
-import type { UmoEditorOptions } from '@/types'
+import type { WattEditorOptions } from '@/types'
 
 import App from './app.vue'
-import { useUmoEditor } from './components'
+import { useWattEditor } from './components'
 const app = createApp(App)
 
 const options = {}
 
-app.use(useUmoEditor, options as unknown as UmoEditorOptions)
+app.use(useWattEditor, options as unknown as WattEditorOptions)
 
 app.mount('#app')

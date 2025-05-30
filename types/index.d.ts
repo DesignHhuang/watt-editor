@@ -101,7 +101,7 @@ export interface FileOptions {
     }[]
 }
 
-export interface UmoEditorOptions {
+export interface WattEditorOptions {
     editorKey: string
     locale: SupportedLocale
     theme: 'light' | 'dark'

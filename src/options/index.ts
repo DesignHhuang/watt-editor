@@ -11,13 +11,13 @@ import {
 import type {
     LineHeight,
     LocaleLabel,
-    UmoEditorOptions,
+    WattEditorOptions,
 } from '@/types'
 
 import { defaultDicts } from './dicts'
 
 // 默认配置
-const defaultOptions: UmoEditorOptions = {
+const defaultOptions: WattEditorOptions = {
     editorKey: 'default',
     locale: 'zh-CN',
     theme: 'light',

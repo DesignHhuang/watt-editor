@@ -62,7 +62,7 @@ import cnConfig from 'tdesign-vue-next/esm/locale/zh_CN'
 import { getSelectionNode, getSelectionText } from '@/extensions/selection'
 import { i18n } from '@/i18n'
 import { propsOptions } from '@/options'
-import type { PageOption, UmoEditorOptions } from '@/types'
+import type { PageOption, WattEditorOptions } from '@/types'
 import type { DocumentOptions, SupportedLocale } from '@/types'
 import { contentTransform } from '@/utils/content-transform'
 import { getOpitons } from '@/utils/options'
@@ -72,7 +72,7 @@ import ruConfig from '../locales/tdesign/ru-RU'
 
 const { toBlob, toJpeg, toPng } = domToImage
 
-defineOptions({ name: 'UmoEditor' })
+defineOptions({ name: 'WattEditor' })
 
 // Props and Emits
 const props = defineProps(propsOptions)
@@ -239,7 +239,7 @@ watch(
 // i18n Setup
 // @ts-ignore
 const { t, locale, mergeLocaleMessage } = useI18n()
-const $locale = useStorage('umo-editor:locale', options.value.locale)
+const $locale = useStorage('watt-editor:locale', options.value.locale)
 locale.value = $locale.value
 const getLocaleMessage = (lang: SupportedLocale) => {
   const translations = options.value.translations?.[lang.replaceAll('-', '_')]
@@ -269,9 +269,9 @@ const localeConfig = $ref<Record<string, GlobalConfigProvider>>({
 })
 
 // Options Setup
-const setOptions = (value: UmoEditorOptions) => {
+const setOptions = (value: WattEditorOptions) => {
   options.value = getOpitons(value)
-  const $locale = useStorage('umo-editor:locale', options.value.locale)
+  const $locale = useStorage('watt-editor:locale', options.value.locale)
   if (!$locale.value) {
     $locale.value = options.value.locale
   }

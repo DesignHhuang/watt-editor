@@ -1,22 +1,22 @@
 import 'virtual:svg-icons-register'
 
-import UmoEditor from './index.vue'
+import WattEditor from './index.vue'
 import UmoMenuButton from './menus/button.vue'
 import UmoDialog from './modal.vue'
 import UmoTooltip from './tooltip.vue'
 
-const useUmoEditor = {
-  install: (app: any, options: any) => {
-    app.provide('defaultOptions', options)
-    app.component(UmoEditor.name ?? 'UmoEditor', UmoEditor)
-  },
+const useWattEditor = {
+    install: (app: any, options: any) => {
+        app.provide('defaultOptions', options)
+        app.component(WattEditor.name ?? 'WattEditor', WattEditor)
+    },
 }
 
 export {
-  UmoEditor as default,
-  UmoDialog,
-  UmoEditor,
-  UmoMenuButton,
-  UmoTooltip,
-  useUmoEditor,
+    WattEditor as default,
+    UmoDialog,
+    WattEditor,
+    UmoMenuButton,
+    UmoTooltip,
+    useWattEditor,
 }
