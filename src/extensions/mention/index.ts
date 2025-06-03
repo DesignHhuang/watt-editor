@@ -20,9 +20,6 @@ const CustomMention = Mention.extend({
             position: {
                 default: null,
             },
-            avatar: {
-                default: null,
-            }
         }
     },
     addCommands() {

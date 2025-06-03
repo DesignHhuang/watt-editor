@@ -3,10 +3,10 @@ import tippy from 'tippy.js'
 
 import type { UserItem } from '@/types'
 
-export default (users: UserItem[], mentionComp: Component) => {
+export default (users: UserItem[], mentionComp: Component, container: string) => {
     return {
         items: ({ query }: { query: string }) =>
-            users.filter((user: UserItem) => user.label.includes(query)).slice(0, 10),
+            users.filter((user: UserItem) => user.label.toLowerCase().includes(query.toLowerCase())),
 
         command: ({ editor, range, props }: any) => {
             editor
@@ -39,9 +39,14 @@ export default (users: UserItem[], mentionComp: Component) => {
                     if (!props.clientRect) {
                         return
                     }
-                    popup = tippy('body', {
+
+                    const node = document.querySelector(
+                        `${container} .umo-page-content`,
+                    ) as HTMLElement
+
+                    popup = tippy(container, {
                         getReferenceClientRect: props.clientRect,
-                        appendTo: () => document.body,
+                        appendTo: node,
                         content: component.element,
                         showOnCreate: true,
                         interactive: true,
