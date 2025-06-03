@@ -64,6 +64,7 @@ watch(
   padding: 16px;
   scroll-behavior: smooth;
   .umo-page-content {
+    flex: 1;
     transform-origin: 0 0;
     box-sizing: border-box;
     display: flex;
