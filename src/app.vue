@@ -60,7 +60,6 @@ const options = $ref({
     if (!file) {
       throw new Error('没有找到要上传的文件')
     }
-    console.log('onUpload', file)
     await new Promise((resolve) => setTimeout(resolve, 3000))
     return {
       id: shortId(),
@@ -70,9 +69,7 @@ const options = $ref({
       size: file.size,
     }
   },
-  onFileDelete(id: string, url: string) {
-    console.log(id, url)
-  },
+  onFileDelete(id: string, url: string) {},
 })
 </script>
 
@@ -92,7 +89,6 @@ body {
   box-sizing: border-box;
   position: relative;
   width: 100%;
-  max-height: 200px;
   border-radius: 12px;
   overflow: hidden;
 }

@@ -58,7 +58,6 @@
 
 <script setup lang="ts">
 const editor = inject('editor')
-const options = inject('options')
 </script>
 
 <style lang="less">
