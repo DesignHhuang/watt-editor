@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-import type { FocusPosition } from '@tiptap/core'
+import { type FocusPosition } from '@tiptap/core'
 import { isBoolean, isRecord, isString } from '@tool-belt/type-predicates'
 import domToImage from 'dom-to-image-more'
 import type {
@@ -512,35 +512,32 @@ const focus = (position = 'start', options = { scrollIntoView: true }) =>
 
 const blur = () => editor.value?.chain().blur().run()
 
-const reset = (silent: boolean) => {
+const reset = () => {
   const resetFn = () => {
     localStorage.clear()
     location.reload()
   }
-  if (silent) {
-    resetFn()
-    return
-  }
-  const dialog = useConfirm({
-    attach: container,
-    theme: 'warning',
-    header: t('resetAll.title'),
-    body: t('resetAll.message'),
-    confirmBtn: {
-      theme: 'warning',
-      content: t('resetAll.reset'),
-    },
-    onConfirm() {
-      dialog.destroy()
-      resetFn()
-    },
-  })
+  resetFn()
 }
 
 const destroy = () => {
   editor.value?.destroy()
   removeAllHotkeys()
   destroyed.value = true
+}
+
+const getAllMentions = () => {
+  const mentions: any[] = []
+  editor.value.state.doc.descendants((node: any) => {
+    if (node.type.name === 'mention') {
+      // 去除重复的id
+      const same = mentions.find((res) => res.id === node.attrs.id)
+      if (!same) {
+        mentions.push(node.attrs)
+      }
+    }
+  })
+  return mentions
 }
 
 // Content Excerpt Methods
@@ -586,6 +583,7 @@ defineExpose({
   getText,
   getHTML,
   getJSON,
+  getAllMentions,
   getContentExcerpt,
   getEditor: () => editor,
   useEditor: () => editor.value,
