@@ -2,14 +2,8 @@ import type { Extension } from '@tiptap/core'
 import type { AsyncFunction } from '@tool-belt/type-predicates'
 
 export type SupportedLocale = 'en-US' | 'zh-CN' | 'ru-RU'
-export interface MarginOption {
-    left: number
-    right: number
-    top: number
-    bottom: number
-}
 export interface PageOption {
-    defaultMargin?: MarginOption
+    defaultPadding?: string
     defaultOrientation?: string
     defaultBackground?: string
     size?: {
@@ -125,3 +119,5 @@ export interface WattEditorOptions {
     onFileUpload?: (file: File) => Promise<{ id: string; url: string }>
     onFileDelete?: CallableFunction
 }
+
+export * from '../dist/watt-editor'

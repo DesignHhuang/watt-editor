@@ -44,12 +44,7 @@
 
 <script setup lang="ts">
 import type { FocusPosition } from '@tiptap/core'
-import {
-  isBoolean,
-  isNumber,
-  isRecord,
-  isString,
-} from '@tool-belt/type-predicates'
+import { isBoolean, isRecord, isString } from '@tool-belt/type-predicates'
 import domToImage from 'dom-to-image-more'
 import type {
   DialogOptions,
@@ -127,9 +122,9 @@ provide('destroyed', destroyed)
 
 watch(
   () => options.value.page,
-  ({ defaultBackground, defaultMargin, defaultOrientation }: PageOption) => {
+  ({ defaultBackground, defaultPadding, defaultOrientation }: PageOption) => {
     page.value = {
-      margin: defaultMargin,
+      padding: defaultPadding,
       background: defaultBackground,
       orientation: defaultOrientation,
       zoomLevel: 100,

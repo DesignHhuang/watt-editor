@@ -16,6 +16,9 @@ const options = $ref({
   /* toolbar: {
     defaultMode: 'hidden',
   }, */
+  page: {
+    defaultPadding: '10px',
+  },
   document: {
     title: 'text',
     content: '',

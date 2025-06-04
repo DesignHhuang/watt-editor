@@ -1,6 +1,9 @@
 <template>
   <div class="umo-page-container">
-    <div class="umo-zoomable-container umo-scrollbar">
+    <div
+      class="umo-zoomable-container umo-scrollbar"
+      :style="{ padding: pageOptions.padding }"
+    >
       <div class="umo-page-content">
         <div class="umo-page-node-content">
           <editor>
@@ -23,6 +26,7 @@
 <script setup lang="ts">
 const container = inject('container')
 const imageViewer = inject('imageViewer')
+const pageOptions = inject('page')
 
 // 图片预览
 let previewImages = $ref<string[]>([])
@@ -61,7 +65,6 @@ watch(
 
 .umo-zoomable-container {
   flex: 1;
-  padding: 16px;
   scroll-behavior: smooth;
   .umo-page-content {
     flex: 1;

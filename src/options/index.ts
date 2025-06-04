@@ -29,12 +29,7 @@ const defaultOptions: WattEditorOptions = {
         disableMenuItems: [],
     },
     page: {
-        defaultMargin: {
-            left: 3.18,
-            right: 3.18,
-            top: 2.54,
-            bottom: 2.54,
-        },
+        defaultPadding: '16px',
         defaultOrientation: 'portrait',
         defaultBackground: '#fff',
     },
@@ -267,32 +262,10 @@ const ojbectSchema = new ObjectSchema({
         validate: 'object',
         required: false,
         schema: {
-            defaultMargin: {
-                required: false,
+            defaultPadding: {
                 merge: 'replace',
-                validate: 'object',
-                schema: {
-                    left: {
-                        merge: 'replace',
-                        validate: 'number',
-                        required: false,
-                    },
-                    right: {
-                        merge: 'replace',
-                        validate: 'number',
-                        required: false,
-                    },
-                    top: {
-                        merge: 'replace',
-                        validate: 'number',
-                        required: false,
-                    },
-                    bottom: {
-                        merge: 'replace',
-                        validate: 'number',
-                        required: false,
-                    },
-                },
+                validate: 'string',
+                required: false,
             },
             defaultOrientation: {
                 merge: 'replace',
