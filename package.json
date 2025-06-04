@@ -1,6 +1,6 @@
 {
     "name": "watt-editor",
-    "version": "1.1.6",
+    "version": "1.1.7",
     "type": "module",
     "author": {
         "name": "huangxiaomin",
@@ -22,7 +22,7 @@
             "import": "./dist/watt-editor.js"
         },
         "./style": {
-            "import": "./dist/style.css"
+            "import": "./dist/watt-editor.css"
         }
     },
     "types": "./types/index.d.ts",
