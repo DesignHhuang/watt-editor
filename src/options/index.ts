@@ -25,7 +25,7 @@ const defaultOptions: WattEditorOptions = {
     dicts: defaultDicts,
     toolbar: {
         defaultMode: 'classic',
-        menus: ['base', 'insert'],
+        menus: ['insert', 'base'],
         disableMenuItems: [],
     },
     page: {
