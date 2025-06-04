@@ -50,7 +50,7 @@ const buildConfig = {
     rollupOptions: {
         output: [
             {
-                intro: `import './style.css'`,
+                intro: `import './watt-editor.css'`,
                 format: 'es' as const,
             },
         ],

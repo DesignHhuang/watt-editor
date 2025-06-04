@@ -22,7 +22,7 @@
             "import": "./dist/watt-editor.js"
         },
         "./style": {
-            "import": "./dist/watt-editor.css"
+            "import": "./dist/style.css"
         }
     },
     "types": "./types/index.d.ts",
