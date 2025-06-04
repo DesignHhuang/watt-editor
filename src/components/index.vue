@@ -544,62 +544,6 @@ const destroy = () => {
   destroyed.value = true
 }
 
-// Content Saving Methods
-const saveContent = async (showMessage = true) => {
-  if (options.value.document?.readOnly) {
-    return
-  }
-  try {
-    useMessage('loading', {
-      attach: container,
-      content: t('save.saving'),
-      placement: 'bottom',
-      closeBtn: true,
-      offset: [0, -20],
-    })
-    const success = await options.value?.onSave?.(
-      {
-        html: editor.value?.getHTML(),
-        json: editor.value?.getJSON(),
-        text: editor.value?.getText(),
-      },
-      page.value,
-      $document.value,
-    )
-    if (!success) {
-      MessagePlugin.closeAll()
-      useMessage('error', {
-        attach: container,
-        content: t('save.failed'),
-        placement: 'bottom',
-        offset: [0, -20],
-      })
-      return
-    }
-    emits('saved')
-    if (showMessage) {
-      MessagePlugin.closeAll()
-      useMessage('success', {
-        attach: container,
-        content:
-          success === false || success === true ? t('save.success') : success,
-        placement: 'bottom',
-        offset: [0, -20],
-      })
-    }
-    const time = useTimestamp({ offset: 0 })
-    savedAt.value = time.value
-  } catch (e: unknown) {
-    const error = e as Error
-    useMessage('error', {
-      attach: container,
-      content: error?.message ? error.message : t('save.error'),
-      placement: 'bottom',
-      offset: [0, -20],
-    })
-    console.error((e as Error).message)
-  }
-}
 // Content Excerpt Methods
 const getContentExcerpt = (charLimit = 100, more = ' ...') => {
   const text = editor.value?.getText()
@@ -643,7 +587,6 @@ defineExpose({
   getText,
   getHTML,
   getJSON,
-  saveContent,
   getContentExcerpt,
   getEditor: () => editor,
   useEditor: () => editor.value,

@@ -36,6 +36,7 @@
     },
     "lib": ["ESNext", "DOM", "DOM.Iterable", "ScriptHost"]
   },
+  "typeRoots": ["./types", "./node_modules/@types"],
   "vueCompilerOptions": {
     "plugins": ["unplugin-vue-macros/volar"]
   },

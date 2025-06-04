@@ -77,11 +77,6 @@ const defaultOptions: WattEditorOptions = {
         zh_CN: {},
         ru_RU: {},
     },
-    async onSave() {
-        return await new Promise((_, reject) => {
-            reject(new Error('Key "onSave": Please set the save method'))
-        })
-    },
     async onFileUpload(file: File) {
         return await new Promise((_, reject) => {
             if (!file) {
@@ -480,15 +475,6 @@ const ojbectSchema = new ObjectSchema({
     translations: {
         merge: 'replace',
         validate: 'object',
-        required: false,
-    },
-    onSave: {
-        merge: 'replace',
-        validate(value: AsyncFunction) {
-            if (!isAsyncFunction(value)) {
-                throw new Error('Key "onSave" must be a async function.')
-            }
-        },
         required: false,
     },
     onFileUpload: {

@@ -100,9 +100,6 @@ const options = $ref({
     },
   ],
   mentionComp: markRaw(Mentions),
-  async onSave(content: string, page: number, document: { content: string }) {
-    localStorage.setItem('document.content', document.content)
-  },
   async onFileUpload(file: File & { url?: string }) {
     if (!file) {
       throw new Error('没有找到要上传的文件')

@@ -115,7 +115,6 @@ export interface WattEditorOptions {
     mentionComp?: Component,
     extensions?: Extension[]
     translations?: Record<string, unknown>
-    onSave?: AsyncFunction
     onFileUpload?: (file: File) => Promise<{ id: string; url: string }>
     onFileDelete?: CallableFunction
 }
