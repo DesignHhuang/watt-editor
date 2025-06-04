@@ -135,7 +135,6 @@ watch(
         zoom: 100,
       },
     }
-    editor.value?.commands.hideInvisibleCharacters()
   },
   { immediate: true, deep: true },
 )

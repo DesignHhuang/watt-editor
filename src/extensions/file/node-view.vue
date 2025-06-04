@@ -161,12 +161,14 @@ const supportPreview = $computed(() => {
   const supportNodes = ['image', 'video', 'audio']
   return supportNodes.includes(node.attrs.previewType) || previewURL !== null
 })
+
 const togglePreview = () => {
   if (previewURL !== null) {
     previewModal = true
     return
   }
   const { attrs } = node
+
   editor.value.commands.insertContent({
     type: attrs.previewType,
     attrs: {

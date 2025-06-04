@@ -13,9 +13,9 @@ import Mentions from './mentions.vue'
 const editorRef = $ref(null)
 const options = $ref({
   locale: 'en-US',
-  /* toolbar: {
-    defaultMode: 'hidden',
-  }, */
+  toolbar: {
+    defaultMode: 'classic',
+  },
   page: {
     defaultPadding: '10px',
   },

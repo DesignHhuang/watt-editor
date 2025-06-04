@@ -138,83 +138,6 @@
         "mention": "Mention",
         "video": "Video"
     },
-    "tools": {
-        "barcode": {
-            "text": "Barcode",
-            "edit": "Edit Barcode",
-            "title": "Barcode",
-            "format": "Format",
-            "font": "Font Style",
-            "lineColor": "Barcode & Text Color",
-            "bgColor": "Barcode Background Color",
-            "more": "More",
-            "width": "Width:",
-            "height": "Height:",
-            "margin": "Margin:",
-            "displayValue": "Display Text",
-            "displayValueText": "Show Text",
-            "textContent": "Text Content:",
-            "textContentTip": "Overrides barcode content text",
-            "textPosition": "Text Position:",
-            "top": "Top",
-            "bottom": "Bottom",
-            "textMargin": "Vertical Distance:",
-            "fontSize": "Font Size:",
-            "placeholder": "Enter content to convert into barcode",
-            "error": "Your input may not comply with the current barcode standard constraints, please check.",
-            "preview": "Preview",
-            "renderError": "No preview available",
-            "notEmpty": "Barcode content cannot be empty"
-        },
-        "qrcode": {
-            "text": "QR Code",
-            "edit": "Edit QR Code",
-            "level": "QR Code Error Correction Level",
-            "levelL": "Low",
-            "levelM": "Medium",
-            "levelQ": "Quartile",
-            "levelH": "High",
-            "padding": "padding:",
-            "paddingTip": "white space padding",
-            "width": "Size:",
-            "widthTip": "QR Code size in pixels",
-            "color": "QR Code Color",
-            "bgColor": "Color of background",
-            "placeholder": "Enter content to convert into QR Code",
-            "preview": "Preview",
-            "renderError": "QR Code generation failed",
-            "notEmpty": "QR Code content cannot be empty"
-        },
-        "signature": {
-            "text": "E-Signature",
-            "title": "Insert Electronic Signature",
-            "clear": "Clear",
-            "lineWidth": "Pen Thickness",
-            "lineColor": "Pen Color",
-            "smooth": "Show Brush Strokes",
-            "reset": "Reset Options",
-            "tip": "Please sign in the this area",
-            "notEmpty": "No signature detected"
-        }
-    },
-    "export": {
-        "image": {
-            "text": "Image",
-            "jpg": "JPG",
-            "png": "PNG",
-            "error": {
-                "title": "Error Message",
-                "message": "Failed to export image, please try again or refresh the page."
-            }
-        },
-        "pdf": {
-            "text": "PDF Document",
-            "title": "Export PDF Document",
-            "message": "Before exporting the PDF document, please ensure that all images on the pages have finished loading. Then, in the pop-up print dialog, select 'Printer - Save as PDF', and click the 'Save' button. To ensure that all content is displayed correctly, please check the 'Background graphics' option in the print dialog box and set the 'Margins' to 'None.'",
-            "confirm": "I Understand"
-        },
-        "text": "Text"
-    },
     "list": {
         "bullet": {
             "text": "Bulleted List",
@@ -351,8 +274,11 @@
     },
     "file": {
         "uploading": "Uploading file...",
+        "preview": "Preview",
         "download": "Download File",
         "limit": "File \"{filename}\" exceeds the limit of {size}MB",
+        "unknownName": "Unknown Name",
+        "unknownSize": "Unknown Size",
         "notAllow": {
             "title": "Error Message",
             "message": "Insertion of this file type is not allowed in the current document."

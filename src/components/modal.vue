@@ -1,7 +1,7 @@
 <template>
   <t-dialog
     :visible="visible"
-    :attach="container"
+    attach="body"
     :prevent-scroll-through="false"
     placement="center"
     draggable
@@ -23,5 +23,4 @@ defineProps({
     default: false,
   },
 })
-const container = inject('container', 'body')
 </script>

@@ -62,16 +62,6 @@
             "paragraph": "正文",
             "tip": "设置标题，可依据标题生成大纲"
         },
-        "highlight": {
-            "text": "高亮显示",
-            "clear": "清除高亮显示",
-            "yellowBg": "黄色背景",
-            "purpleBg": "紫色背景",
-            "greenBg": "绿色背景",
-            "blueBg": "蓝色背景",
-            "red": "红色字体",
-            "green": "绿色字体"
-        },
         "indent": "增加缩进",
         "italic": "斜体",
         "lineHeight": {
@@ -85,24 +75,6 @@
             "bottom": "下间距",
             "default": "默认",
             "reset": "自动间距"
-        },
-        "importWord": {
-            "text": "导入 Word",
-            "loadScript": {
-                "title": "错误提示",
-                "message": "正在加载转换的脚本，请稍后重试。"
-            },
-            "limitSize": "文件大小不能超过 {limitSize}MB。",
-            "converting": "正在转换Word文档，请稍后...",
-            "convertError": "解析 Word 文档出错",
-            "importError": "导入 Word 文档出错"
-        },
-        "markdown": {
-            "text": "Markdown",
-            "enable": "开启 Markdown 模式",
-            "disable": "关闭 Markdown 模式",
-            "message": "此操作会重置编辑器，切换后当前历史记录会丢失，将无法进行“撤回”等操作，确定要现在切换吗？",
-            "toggle": "立即切换"
         },
         "quote": "引用",
         "redo": "重做",
@@ -138,83 +110,6 @@
         "tag": "标签",
         "callout": "高亮块",
         "mention": "提及某人"
-    },
-    "tools": {
-        "barcode": {
-            "text": "条形码",
-            "edit": "编辑条形码",
-            "title": "条形码生成",
-            "format": "条形码标准",
-            "font": "文字字体",
-            "lineColor": "条形码及文字颜色",
-            "bgColor": "条形码背景颜色",
-            "more": "更多",
-            "width": "单个条形的宽度：",
-            "height": "条形码的高度：",
-            "margin": "条形码四周留白：",
-            "displayValue": "是否显示文字",
-            "displayValueText": "显示文字",
-            "textContent": "文字内容：",
-            "textContentTip": "填写后会覆盖条形码内容文本",
-            "textPosition": "文字所在位置：",
-            "top": "顶部",
-            "bottom": "底部",
-            "textMargin": "文字上下距离：",
-            "fontSize": "文字字体大小：",
-            "placeholder": "请输入要转化成条形码的内容",
-            "error": "您输入的内容可能不符合当前选择的条形码规范约束，请检查。",
-            "preview": "预览",
-            "renderError": "当前无预览内容",
-            "notEmpty": "条形码内容不能为空"
-        },
-        "qrcode": {
-            "text": "二维码",
-            "edit": "编辑二维码",
-            "level": "二维码容错能力",
-            "levelL": "低",
-            "levelM": "中",
-            "levelQ": "高",
-            "levelH": "最高",
-            "padding": "四周留白：",
-            "paddingTip": "二维码四周留白大小",
-            "width": "宽高度：",
-            "widthTip": "二维码的宽度和高度",
-            "color": "二维码颜色",
-            "bgColor": "二维码背景颜色",
-            "placeholder": "请输入要转化成二维码的内容",
-            "preview": "预览",
-            "renderError": "二维码生成失败",
-            "notEmpty": "二维码内容不能为空"
-        },
-        "signature": {
-            "text": "电子签名",
-            "title": "插入电子签名",
-            "clear": "清空画布",
-            "lineWidth": "画笔粗细",
-            "lineColor": "画笔颜色",
-            "smooth": "显示笔锋",
-            "reset": "重置设置",
-            "tip": "请在当前区域签名",
-            "notEmpty": "没有检测到您的签名"
-        }
-    },
-    "export": {
-        "image": {
-            "text": "图片",
-            "jpg": "JPG 格式",
-            "png": "PNG 格式",
-            "error": {
-                "title": "错误提示",
-                "message": "导出图片失败，请重试或尝试刷新页面。"
-            }
-        },
-        "pdf": {
-            "text": "PDF文档",
-            "title": "导出 PDF 文档",
-            "message": "导出 PDF 文档前，请确保所有页面中的图片已加载完毕。然后在弹出的打印框中选择“打印机 - 另存为PDF”，再点击“保存”按钮即可。为确保所有内容正确显示，请在打印框中勾选 “背景图形”选项，并将 “边距”设为“无”。",
-            "confirm": "我知道了"
-        },
-        "text": "文本文档"
     },
     "list": {
         "bullet": {
@@ -367,36 +262,6 @@
     },
     "mention": {
         "noResult": "无结果"
-    },
-    "save": {
-        "text": "保存文档",
-        "saved": "文档已保存",
-        "unsaved": "文档未保存",
-        "network": "网络状态：",
-        "online": "在线",
-        "offline": "离线",
-        "saving": "正在保存文档...",
-        "savedAt": "保存时间：",
-        "savedAtText": "{time}保存",
-        "failed": "文档保存失败",
-        "success": "文档保存成功",
-        "error": "文档保存出错",
-        "cache": {
-            "text": "从缓存中恢复",
-            "error": {
-                "title": "错误提示",
-                "message": "当前缓存中没有内容！"
-            }
-        }
-    },
-    "time": {
-        "justNow": "刚刚",
-        "past": "{n}前",
-        "yesterday": "昨天",
-        "day": "{n} 天",
-        "hour": "{n} 小时",
-        "minute": "{n} 分钟",
-        "second": "{n} 秒"
     },
     "dialog": {
         "cancel": "取消"
