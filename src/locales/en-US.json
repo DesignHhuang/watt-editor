@@ -165,12 +165,6 @@
             "lift": "Remove as Task"
         }
     },
-    "colorPicker": {
-        "default": "Default Color",
-        "standard": "Standard Colors",
-        "recent": "Recently Used",
-        "more": "More Colors"
-    },
     "blockMenu": {
         "insert": "Insert Content",
         "template": "Insert Template",

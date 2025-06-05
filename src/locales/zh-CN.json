@@ -138,12 +138,6 @@
             "lift": "移除任务"
         }
     },
-    "colorPicker": {
-        "default": "默认颜色",
-        "standard": "标准色",
-        "recent": "最近使用",
-        "more": "更多颜色"
-    },
     "blockMenu": {
         "insert": "插入新内容",
         "template": "插入模板",
