@@ -79,6 +79,7 @@ watch(
     overflow: visible !important;
     display: flex;
     flex-direction: column;
+    word-break: break-all;
     [contenteditable] {
       outline: none;
     }
