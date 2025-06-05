@@ -182,7 +182,12 @@ watch(
   () => options.value.document,
   (val: any) => {
     $document.value = val
-    val.content && setContent(val.content)
+    val.content &&
+      setContent(val.content, {
+        emitUpdate: true,
+        focusPosition: 'end',
+        focusOptions: { scrollIntoView: true },
+      })
   },
 )
 
