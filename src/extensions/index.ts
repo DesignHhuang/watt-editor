@@ -49,6 +49,7 @@ export const getDefaultExtensions = ({
             codeBlock: false,
             horizontalRule: false,
             dropcursor: false,
+            blockquote: false
         }),
         Placeholder.configure({
             placeholder: () => String(l(doc?.placeholder ?? '')),
