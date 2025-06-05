@@ -80,10 +80,16 @@ watch(
     display: flex;
     flex-direction: column;
     word-break: break-all;
+    max-width: 100%;
+
     [contenteditable] {
       outline: none;
     }
   }
+}
+
+.umo-page-content > * {
+  max-width: 100%;
 }
 
 .umo-page-node-content {
