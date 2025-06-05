@@ -1,7 +1,12 @@
 <template>
   <div class="examples">
     <div class="box">
-      <watt-editor ref="editorRef" v-bind="options" />
+      <watt-editor ref="editorRef" v-bind="readOlnyEditorOptions(content1)" />
+    </div>
+    <div @click="clear">clear</div>
+
+    <div class="box">
+      <watt-editor ref="editorRef" v-bind="readOlnyEditorOptions(content2)" />
     </div>
     <div @click="clear">clear</div>
   </div>
@@ -11,8 +16,28 @@
 import { shortId } from '@/utils/short-id'
 import Mentions from './mentions.vue'
 
+const content1 = ref('111111')
+const content2 = ref('222222')
+
+const readOlnyEditorOptions: any = (content: string) => ({
+  locale: 'en-US',
+  page: { defaultPadding: '10px' },
+  toolbar: {
+    defaultMode: 'hidden',
+  },
+  document: {
+    title: 'document',
+    content: content,
+    characterLimit: 12000,
+    readOnly: true,
+  },
+  cdnUrl: 'https://oss.wattsonic.com/wattteam/svgs',
+  file: {},
+  users: [],
+})
+
 const editorRef = $ref(null)
-const options = $ref({
+const options = ref({
   locale: 'en-US',
   toolbar: {
     defaultMode: 'classic',
@@ -76,9 +101,13 @@ const options = $ref({
 const clear = () => {
   //editorRef.clearContent()
   //console.log(editorRef.getHTML())
-  editorRef.insertBlockquoteWithText(
+  /* editorRef.insertBlockquoteWithText(
     '<blockquote contenteditable="false" class="readonly-blockquote"><p>test mention someone on reply text </p><p><span class="umo-node-mention" data-type="mention" id="1717435295271038978" label="Dr. Hannes F.  Jakob" position="CEO">@Dr. Hannes F.  Jakob</span></p></blockquote><p><span class="umo-node-mention" data-type="mention" id="1717435295271038978" label="Dr. Hannes F.  Jakob" position="CEO">@Dr. Hannes F.  Jakob</span></p>',
-  )
+  ) */
+
+  content1.value = '123123'
+
+  console.log(options.value)
 }
 </script>
 
@@ -92,12 +121,14 @@ body {
   margin: 20px;
   display: flex;
   height: calc(100vh - 40px);
+  flex-direction: column;
 }
 .box {
   border: solid 1px #ddd;
   box-sizing: border-box;
   position: relative;
   width: 100%;
+  height: 500px;
   border-radius: 12px;
   overflow: hidden;
 }

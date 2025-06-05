@@ -182,6 +182,7 @@ watch(
   () => options.value.document,
   (val: any) => {
     $document.value = val
+    val.content && setContent(val.content)
   },
 )
 
