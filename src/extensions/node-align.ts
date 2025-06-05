@@ -13,7 +13,7 @@ export default Extension.create({
     name: 'nodeAlign',
     addOptions() {
         return {
-            defaultAlignment: 'center',
+            defaultAlignment: 'flex-start',
             alignments: ['flex-start', 'center', 'flex-end'],
             types: ['image', 'video', 'file'],
         }

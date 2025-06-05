@@ -1,14 +1,14 @@
 <template>
   <div class="examples">
     <div class="box">
-      <watt-editor ref="editorRef" v-bind="readOlnyEditorOptions(content1)" />
+      <watt-editor ref="editorRef" v-bind="options" />
     </div>
     <div @click="clear">clear</div>
 
-    <div class="box">
+    <!-- <div class="box">
       <watt-editor ref="editorRef" v-bind="readOlnyEditorOptions(content2)" />
     </div>
-    <div @click="clear">clear</div>
+    <div @click="clear">clear</div> -->
   </div>
 </template>
 
@@ -16,8 +16,8 @@
 import { shortId } from '@/utils/short-id'
 import Mentions from './mentions.vue'
 
-const content1 = ref('111111')
-const content2 = ref('222222')
+/* const content1 = ref('111111')
+const content2 = ref('222222') */
 
 const readOlnyEditorOptions: any = (content: string) => ({
   locale: 'en-US',
@@ -104,8 +104,6 @@ const clear = () => {
   /* editorRef.insertBlockquoteWithText(
     '<blockquote contenteditable="false" class="readonly-blockquote"><p>test mention someone on reply text </p><p><span class="umo-node-mention" data-type="mention" id="1717435295271038978" label="Dr. Hannes F.  Jakob" position="CEO">@Dr. Hannes F.  Jakob</span></p></blockquote><p><span class="umo-node-mention" data-type="mention" id="1717435295271038978" label="Dr. Hannes F.  Jakob" position="CEO">@Dr. Hannes F.  Jakob</span></p>',
   ) */
-
-  content1.value = '123123'
 
   console.log(options.value)
 }
