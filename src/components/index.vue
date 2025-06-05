@@ -540,6 +540,17 @@ const reset = () => {
   resetFn()
 }
 
+const selectFile = () => {
+  if (!editor.value) {
+    throw new Error('editor is not ready!')
+  }
+  editor.value
+    ?.chain()
+    .focus()
+    .selectFiles('file', container, uploadFileMap.value)
+    .run()
+}
+
 const destroy = () => {
   editor.value?.destroy()
   removeAllHotkeys()
@@ -607,6 +618,7 @@ defineExpose({
   getJSON,
   getAllMentions,
   getContentExcerpt,
+  selectFile,
   getEditor: () => editor,
   useEditor: () => editor.value,
   getTableOfContents: () => editor.value?.storage.tableOfContents.content,

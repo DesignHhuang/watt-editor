@@ -4,6 +4,7 @@
       <watt-editor ref="editorRef" v-bind="options" />
     </div>
     <div @click="clear">clear</div>
+    <div @click="selectFile">select file</div>
 
     <!-- <div class="box">
       <watt-editor ref="editorRef" v-bind="readOlnyEditorOptions(content2)" />
@@ -85,8 +86,11 @@ const clear = () => {
   /* editorRef.insertBlockquoteWithText(
     '<blockquote contenteditable="false" class="readonly-blockquote"><p>test mention someone on reply text </p><p><span class="umo-node-mention" data-type="mention" id="1717435295271038978" label="Dr. Hannes F.  Jakob" position="CEO">@Dr. Hannes F.  Jakob</span></p></blockquote><p><span class="umo-node-mention" data-type="mention" id="1717435295271038978" label="Dr. Hannes F.  Jakob" position="CEO">@Dr. Hannes F.  Jakob</span></p>',
   ) */
-
   console.log(options.value)
+}
+
+const selectFile = () => {
+  editorRef.selectFile()
 }
 </script>
 
