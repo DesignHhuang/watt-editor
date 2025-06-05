@@ -406,6 +406,13 @@ const setContent = (
     .run()
 }
 
+const clearContent = () => {
+  if (!editor.value) {
+    throw new Error('editor is not ready!')
+  }
+  editor.value.commands.clearContent()
+}
+
 // Content Methods
 const insertContent = (
   content: string,
@@ -424,6 +431,13 @@ const insertContent = (
     .insertContent(doc, { updateSelection: options.updateSelection })
     .focus(options.focusPosition as FocusPosition, options.focusOptions)
     .run()
+}
+
+const insertBlockquoteWithText = (content: string) => {
+  if (!editor.value) {
+    throw new Error('editor is not ready!')
+  }
+  editor.value.chain().insertContent(content).focus().run()
 }
 
 const startTypewriter = (content: object, options: any) => {
@@ -571,7 +585,9 @@ defineExpose({
   setPage,
   setDocument,
   setContent,
+  clearContent,
   insertContent,
+  insertBlockquoteWithText,
   startTypewriter,
   stopTypewriter,
   getTypewriterState,

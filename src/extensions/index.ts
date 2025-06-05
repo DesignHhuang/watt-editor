@@ -28,6 +28,7 @@ import Tag from './tag'
 import TextAlign from './text-align'
 import typeWriter from './type-writer'
 import Video from './video'
+import { ReadOnlyBlockquote } from './blockquote'
 
 export const getDefaultExtensions = ({
     container,
@@ -82,6 +83,7 @@ export const getDefaultExtensions = ({
         CodeBlock,
         Tag,
         Columns,
+        ReadOnlyBlockquote,
 
         // 其他
         Mention.configure({

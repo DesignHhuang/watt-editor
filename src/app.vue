@@ -3,6 +3,7 @@
     <div class="box">
       <watt-editor ref="editorRef" v-bind="options" />
     </div>
+    <div @click="clear">clear</div>
   </div>
 </template>
 
@@ -71,6 +72,14 @@ const options = $ref({
   },
   onFileDelete(id: string, url: string) {},
 })
+
+const clear = () => {
+  //editorRef.clearContent()
+  //console.log(editorRef.getHTML())
+  editorRef.insertBlockquoteWithText(
+    '<blockquote contenteditable="false" class="readonly-blockquote"><p>test mention someone on reply text </p><p><span class="umo-node-mention" data-type="mention" id="1717435295271038978" label="Dr. Hannes F.  Jakob" position="CEO">@Dr. Hannes F.  Jakob</span></p></blockquote><p><span class="umo-node-mention" data-type="mention" id="1717435295271038978" label="Dr. Hannes F.  Jakob" position="CEO">@Dr. Hannes F.  Jakob</span></p>',
+  )
+}
 </script>
 
 <style>
