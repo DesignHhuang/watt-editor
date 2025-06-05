@@ -44,6 +44,7 @@ const options = ref({
   },
   page: {
     defaultPadding: '10px',
+    defaultBackground: 'transparent',
   },
   document: {
     title: 'text',
@@ -60,26 +61,6 @@ const options = ref({
       avatar: '',
     },
     { id: 'Cassielxd', label: 'Cassielxd', position: 'developer', avatar: '' },
-    {
-      id: 'Goldziher',
-      label: "Na'aman Hirschfeld",
-      position: 'developer',
-      avatar: '',
-    },
-    { id: 'SerRashin', label: 'SerRashin', position: 'developer', avatar: '' },
-    { id: 'ChenErik', label: 'ChenErik', position: 'developer', avatar: '' },
-    {
-      id: 'china-wangxu',
-      label: 'china-wangxu',
-      position: 'developer',
-      avatar: '',
-    },
-    {
-      id: 'Sherman Xu',
-      label: 'xuzhenjun130',
-      position: 'developer',
-      avatar: '',
-    },
   ],
   mentionComp: markRaw(Mentions),
   async onFileUpload(file: File & { url?: string }) {

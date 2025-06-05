@@ -654,7 +654,6 @@ defineExpose({
   }
   .umo-main {
     flex: 1;
-    background-color: #fff;
     overflow: hidden;
   }
 }

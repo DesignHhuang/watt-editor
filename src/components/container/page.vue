@@ -1,5 +1,8 @@
 <template>
-  <div class="umo-page-container">
+  <div
+    class="umo-page-container"
+    :style="{ backgroundColor: pageOptions.background }"
+  >
     <div
       class="umo-zoomable-container umo-scrollbar"
       :style="{ padding: pageOptions.padding }"
