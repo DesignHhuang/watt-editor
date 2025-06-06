@@ -15,7 +15,9 @@ import { shortId } from '@/utils/short-id'
 import Mentions from './mentions.vue'
 
 //const content1 = ref('111111')
-/* const content2 = ref('') */
+const content2 = ref(
+  '<p>试一下新增一些东西，比如下面的</p><span><img vnode="true" type="image/png" name="plant-pic.png" id="4mh4z0f9" src="https://oss.wattsonic.com/wattteam_test/2025-06-04/cb02024e-c999-c334-c136-9532f99eff65/plant-pic.png" width="160" height="100" left="0" top="0" draggable="false" rotatable="false" equalproportion="true" flipx="false" flipy="false" uploaded="true" error="false" previewtype="image"></span><span><img vnode="true" type="image/jpeg" name="售后。3.jpg" id="nawc8y67" src="https://oss.wattsonic.com/wattteam_test/2025-06-06/55655ea3-6d39-b3ee-df16-88f9ce94622a/售后。3.jpg" width="160" height="100" left="0" top="0" draggable="false" rotatable="false" equalproportion="true" flipx="false" flipy="false" uploaded="true" error="false" previewtype="image"></span><file vnode="true" id="vknlf56y" url="https://oss.wattsonic.com/wattteam_test/2025-06-06/9f04f142-510a-10aa-0f34-877b9361c1c3/工单模板.xlsx" name="工单模板.xlsx" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" uploaded="true" previewtype="file" height="200"></file><file vnode="true" id="xl32yidg" url="https://oss.wattsonic.com/wattteam_test/2025-06-06/82099b4d-8fec-ac1d-9948-31ab74c99ef6/最大视在功率测试用例.docx" name="最大视在功率测试用例.docx" type="application/vnd.openxmlformats-officedocument.wordprocessingml.document" uploaded="true" previewtype="file" height="200"></file>',
+)
 
 const readOlnyEditorOptions: any = (content: string) => ({
   locale: 'en-US',

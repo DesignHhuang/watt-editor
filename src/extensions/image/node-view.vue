@@ -1,7 +1,7 @@
 <template>
   <node-view-wrapper
     ref="containerRef"
-    class="umo-node-view"
+    class="umo-node-view watt-editor-image"
     :class="{ 'umo-floating-node': node.attrs.draggable }"
     :style="nodeStyle"
     @dblclick="openImageViewer"
@@ -241,6 +241,10 @@ watch(
 </script>
 
 <style lang="less">
+.watt-editor-image {
+  display: inline-flex !important;
+  margin-right: 10px;
+}
 .umo-node-view {
   .umo-node-image {
     max-width: 100%;
