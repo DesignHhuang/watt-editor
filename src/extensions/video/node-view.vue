@@ -10,6 +10,7 @@
         :selected="selected"
         :rotatable="false"
         :boundary="false"
+        :disabled="options.document?.readOnly"
         :width="Number(node.attrs.width)"
         :height="Number(node.attrs.height)"
         :min-width="300"

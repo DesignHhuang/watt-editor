@@ -120,5 +120,3 @@ export interface WattEditorOptions {
 }
 
 export * from '../dist/watt-editor'
-
-declare module 'watt-editor'

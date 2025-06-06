@@ -17,8 +17,8 @@
 import { shortId } from '@/utils/short-id'
 import Mentions from './mentions.vue'
 
-/* const content1 = ref('111111')
-const content2 = ref('222222') */
+/* const content1 = ref('')
+const content2 = ref('')
 
 const readOlnyEditorOptions: any = (content: string) => ({
   locale: 'en-US',
@@ -35,7 +35,7 @@ const readOlnyEditorOptions: any = (content: string) => ({
   cdnUrl: 'https://oss.wattsonic.com/wattteam/svgs',
   file: {},
   users: [],
-})
+}) */
 
 const editorRef = $ref(null)
 const options = ref({
