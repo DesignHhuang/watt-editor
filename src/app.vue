@@ -3,13 +3,10 @@
     <div class="box">
       <watt-editor ref="editorRef" v-bind="options" />
     </div>
-    <div @click="clear">clear</div>
-    <div @click="selectFile">select file</div>
-
-    <!-- <div class="box">
+    <div>不可编辑数据</div>
+    <div class="box">
       <watt-editor ref="editorRef" v-bind="readOlnyEditorOptions(content2)" />
     </div>
-    <div @click="clear">clear</div> -->
   </div>
 </template>
 
@@ -17,8 +14,8 @@
 import { shortId } from '@/utils/short-id'
 import Mentions from './mentions.vue'
 
-/* const content1 = ref('')
-const content2 = ref('')
+//const content1 = ref('111111')
+/* const content2 = ref('') */
 
 const readOlnyEditorOptions: any = (content: string) => ({
   locale: 'en-US',
@@ -35,7 +32,7 @@ const readOlnyEditorOptions: any = (content: string) => ({
   cdnUrl: 'https://oss.wattsonic.com/wattteam/svgs',
   file: {},
   users: [],
-}) */
+})
 
 const editorRef = $ref(null)
 const options = ref({
@@ -79,15 +76,6 @@ const options = ref({
   },
   onFileDelete(id: string, url: string) {},
 })
-
-const clear = () => {
-  //editorRef.clearContent()
-  //console.log(editorRef.getHTML())
-  /* editorRef.insertBlockquoteWithText(
-    '<blockquote contenteditable="false" class="readonly-blockquote"><p>test mention someone on reply text </p><p><span class="umo-node-mention" data-type="mention" id="1717435295271038978" label="Dr. Hannes F.  Jakob" position="CEO">@Dr. Hannes F.  Jakob</span></p></blockquote><p><span class="umo-node-mention" data-type="mention" id="1717435295271038978" label="Dr. Hannes F.  Jakob" position="CEO">@Dr. Hannes F.  Jakob</span></p>',
-  ) */
-  console.log(options.value)
-}
 
 const selectFile = () => {
   editorRef.selectFile()
